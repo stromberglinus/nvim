@@ -1,3 +1,11 @@
+local uname = vim.uv.os_uname()
+
+_G.OS = uname.sysname
+_G.IS_MAC = OS == "Darwin"
+_G.IS_LINUX = OS == "Linux"
+_G.IS_WINDOWS = OS:find("Windows") and true or false
+_G.IS_WSL = IS_LINUX and uname.release:find("Microsoft") and true or false
+
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)

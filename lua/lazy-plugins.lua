@@ -37,6 +37,7 @@ require("lazy").setup({
 
 	require("plugins/flash"),
 
+	require("plugins/alpha"),
 	-- require("plugins.noice.noice"),
 	-- require 'kickstart.plugins.debug',
 	-- require 'kickstart.plugins.indent_line',
