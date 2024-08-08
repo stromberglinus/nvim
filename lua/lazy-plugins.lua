@@ -33,6 +33,8 @@ require("lazy").setup({
 
 	require("plugins/treesitter"),
 
+	require("plugins/oil"),
+
 	-- require("plugins.noice.noice"),
 	-- require 'kickstart.plugins.debug',
 	-- require 'kickstart.plugins.indent_line',
