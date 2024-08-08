@@ -10,13 +10,14 @@
 --
 
 require("lazy").setup({
-	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
-
+	"tpope/vim-sleuth",
 	require("plugins/gitsigns"),
 
 	require("plugins/which-key"),
 
 	require("plugins/telescope/telescope"),
+
+	require("plugins/noice/noice"),
 
 	require("plugins/lspconfig"),
 
@@ -32,6 +33,7 @@ require("lazy").setup({
 
 	require("plugins/treesitter"),
 
+	-- require("plugins.noice.noice"),
 	-- require 'kickstart.plugins.debug',
 	-- require 'kickstart.plugins.indent_line',
 	-- require 'kickstart.plugins.lint',
