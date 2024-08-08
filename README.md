@@ -26,7 +26,7 @@ This requires:
 </details>
 <details><summary>Windows with gcc/make using chocolatey</summary>
 Alternatively, one can install gcc and make which don't require changing the config,
-the easiest way is to use choco:
+the easiest way is to use choco, enusre mingw is set to PATH.
 
 1. install neovim using winget
 
