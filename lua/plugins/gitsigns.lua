@@ -1,8 +1,3 @@
--- Here is a more advanced example where we pass configuration
--- options to `gitsigns.nvim`. This is equivalent to the following Lua:
---    require('gitsigns').setup({ ... })
---
--- See `:help gitsigns` to understand what the configuration keys do
 return {
 	{ -- Adds git related signs to the gutter, as well as utilities for managing changes
 		"lewis6991/gitsigns.nvim",
@@ -13,9 +8,19 @@ return {
 				delete = { text = "_" },
 				topdelete = { text = "‾" },
 				changedelete = { text = "~" },
+				current_line_blame_opts = {
+					virt_text = true,
+					virt_text_pos = "eol",
+					delay = 1000,
+					ignore_whitespace = true,
+				},
+				current_line_blame_formatter = "<author>:<author_time:%Y/%m/%d>-<summary>",
 			},
 			on_attach = function(bufnr)
 				local gitsigns = require("gitsigns")
+
+				-- Enable current line blame by default
+				gitsigns.toggle_current_line_blame(true)
 
 				local function map(mode, l, r, opts)
 					opts = opts or {}
