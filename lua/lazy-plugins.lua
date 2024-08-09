@@ -16,7 +16,7 @@ require("lazy").setup({
 	require("plugins/which-key"),
 
 	require("plugins/telescope/telescope"),
-
+	
 	require("plugins/noice/noice"),
 
 	require("plugins/lspconfig"),
@@ -39,9 +39,9 @@ require("lazy").setup({
 
 	require("plugins/alpha"),
 
-	require("plugins/indent_blankline"),
-
 	require("plugins/catppuccin"),
+
+	require("plugins/indent_blankline"),
 
 	require("plugins/zen_mode"),
 	-- require("plugins.noice.noice"),
