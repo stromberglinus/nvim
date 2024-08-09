@@ -1,7 +1,7 @@
 return {
     {
-
         "catppuccin/nvim",
+        cond = not vim.g.vscode,
         priority = 1000,
         name = "catppuccin",
         lazy = false,
@@ -11,13 +11,13 @@ return {
                 light = "frappe",
                 dark = "mocha",
             },
-            -- transparent_background = OPTIONS.transparent.value,
-            -- no_italic = not OPTIONS.italic.value,
-            -- no_bold = not OPTIONS.bold.value,
-            -- no_underline = not OPTIONS.underline.value,
+            transparent_background = false,
+            no_italic = true,
+            no_bold = true,
+            no_underline = true,
             term_colors = true,
             dim_inactive = {
-                -- enabled = OPTIONS.dim_inactive.value,
+                enabled = false,
                 shade = "dark",
                 percentage = 0.10,
             },
@@ -51,6 +51,7 @@ return {
                 diffview = true,
                 gitsigns = true,
                 fidget = true,
+                harpoon = false,
                 illuminate = true,
                 semantic_tokens = true,
                 dap = true,
@@ -69,9 +70,9 @@ return {
                 window_picker = true,
                 ts_rainbow = true,
                 flash = true,
-                -- ufo = true,
+                ufo = true,
                 noice = true,
-                -- lsp_trouble = true,
+                lsp_trouble = true,
                 telescope = {
                     enabled = true,
                     style = "nvchad",
@@ -119,5 +120,5 @@ return {
             colors.none = "NONE"
         end,
     },
-
 }
+

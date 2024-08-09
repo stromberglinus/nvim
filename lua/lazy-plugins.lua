@@ -11,12 +11,15 @@
 
 require("lazy").setup({
 	"tpope/vim-sleuth",
+
+	require("plugins/catppuccin"),
+
 	require("plugins/gitsigns"),
 
 	require("plugins/which-key"),
 
 	require("plugins/telescope/telescope"),
-	
+
 	require("plugins/noice/noice"),
 
 	require("plugins/lspconfig"),
@@ -24,8 +27,6 @@ require("lazy").setup({
 	require("plugins/conform"),
 
 	require("plugins/cmp"),
-
-	require("plugins/tokyonight"),
 
 	require("plugins/todo-comments"),
 
@@ -38,8 +39,6 @@ require("lazy").setup({
 	require("plugins/flash"),
 
 	require("plugins/alpha"),
-
-	require("plugins/catppuccin"),
 
 	require("plugins/indent_blankline"),
 
