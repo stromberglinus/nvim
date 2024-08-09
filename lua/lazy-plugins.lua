@@ -40,6 +40,8 @@ require("lazy").setup({
 	require("plugins/alpha"),
 
 	require("plugins/indent_blankline"),
+	
+  require("plugins/catppuccin"),
 	-- require("plugins.noice.noice"),
 	-- require 'kickstart.plugins.debug',
 	-- require 'kickstart.plugins.indent_line',
