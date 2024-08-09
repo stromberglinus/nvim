@@ -16,25 +16,62 @@ return {
 			{ "nvim-telescope/telescope-ui-select.nvim" },
 			{ "nvim-telescope/telescope-project.nvim" },
 			{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
+			"andrew-george/telescope-themes",
 		},
 		config = function()
 			require("telescope").setup({
 				defaults = {
+					vimgrep_arguments = {
+						"rg",
+						"-L",
+						"-S",
+						"--color=never",
+						"--column",
+						"--line-number",
+						"--no-heading",
+						"--with-filename",
+						"--smart-case",
+						"--trim",
+					},
+					prompt_prefix = "  ",
+					border = true,
+					set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
+					color_devicons = true,
+
+					winblend = 0,
 					layout_strategy = "vertical",
+
 					layout_config = ui.layouts.vertical,
 					borderchars = ui.borderchars,
+					wrap_results = false,
+					path_display = {
+						truncate = 1,
+						filename_first = {
+							reverse_directories = false,
+						},
+					},
+					selection_caret = "",
+					entry_prefix = " ",
+
 					-- other default settings...
 				},
 				pickers = {
+					colorscheme = {
+						initial_mode = "normal",
+						layout_strategy = "cursor",
+						layout_config = ui.layouts.small_cursor,
+						enable_preview = true,
+					},
+
 					find_files = {
 						initial_mode = "insert",
 						layout_strategy = "horizontal",
 						layout_config = ui.layouts.horizontal,
 					},
 					live_grep = {
-						initial_mode = "insert",
-						layout_strategy = "horizontal",
-						layout_config = ui.layouts.horizontal,
+						-- initial_mode = "insert",
+						-- layout_strategy = "horizontal",
+						layout_config = ui.layouts.lsp,
 					},
 					-- additional pickers with UI configurations...
 				},
