@@ -1,7 +1,7 @@
 --- nvim-cmp configuration for autocompletion in Neovim.
--- This file sets up nvim-cmp and integrates various completion sources such as 
--- LSP, buffer, path, and Git. Additionally, it configures lspkind for adding 
--- icons to completion items, and custom sorting and matching behaviors.
+-- Configuration for Neovim's autocompletion framework using `nvim-cmp`.
+-- The configuration is designed to enhance coding efficiency with intelligent
+-- autocompletion, symbol annotations, and custom snippet support.
 
 return {
 	{
@@ -16,14 +16,24 @@ return {
 			"hrsh7th/cmp-path",
 			"petertriho/cmp-git",
 			"hrsh7th/cmp-cmdline",
-			"onsails/lspkind-nvim",
+			"onsails/lspkind-nvim", -- For icons in completion menu
+			"L3MON4D3/LuaSnip", -- Snippet engine
+			"saadparwaiz1/cmp_luasnip", -- Snippet source for nvim-cmp
 		},
 		config = function(_, _)
 			local cmp = require("cmp")
 			local lspkind = require("lspkind")
+			local luasnip = require("luasnip")
+
+			luasnip.config.setup({}) -- Setup LuaSnip
 
 			cmp.setup({
 				-- Default settings and key mappings
+				snippet = {
+					expand = function(args)
+						luasnip.lsp_expand(args.body)
+					end,
+				},
 				view = {
 					entries = {
 						follow_cursor = true,
@@ -66,6 +76,23 @@ return {
 						ellipsis_char = "...", -- character to show when text is truncated
 					}),
 				},
+				mapping = cmp.mapping.preset.insert({
+					["<C-d>"] = cmp.mapping.scroll_docs(-4),
+					["<C-f>"] = cmp.mapping.scroll_docs(4),
+					["<C-Space>"] = cmp.mapping.complete(),
+					["<CR>"] = cmp.mapping.confirm({
+						behavior = cmp.ConfirmBehavior.Replace,
+						select = true,
+					}),
+					["<Tab>"] = cmp.mapping.select_next_item(),
+					["<S-Tab>"] = cmp.mapping.select_prev_item(),
+				}),
+				sources = cmp.config.sources({
+					{ name = "nvim_lsp" }, -- LSP source
+					{ name = "luasnip" }, -- Snippet source
+					{ name = "buffer" }, -- Buffer source
+					{ name = "path" }, -- Path completion
+				}),
 			})
 
 			-- Set configuration for specific filetype.
