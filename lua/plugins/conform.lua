@@ -1,3 +1,14 @@
+--- `autoformat.lua`: Configuration for autoformatting in Neovim using `conform.nvim`.
+-- This file sets up the following features:
+-- 1. **Autoformatting on Save**: Configures automatic code formatting when saving files,
+--    with the ability to toggle this feature on and off using a keybinding.
+--    - **Keybinding**: Use `<leader>tq` to toggle autoformatting on save.
+--    - **Manual Formatting**: You can manually trigger formatting with `<leader>d`.
+-- 2. **Formatter Configuration**: Specifies different formatters for various file types, such as `stylua` for Lua.
+--    - **Conditional Formatting**: Disables LSP-based formatting for certain file types (e.g., C and C++),
+--      based on whether format on save is enabled.
+-- 3. **Customizable Formatting Behavior**: Allows you to customize the formatters and the conditions under which they run.
+
 local format_on_save_enabled = false -- Start with format on save disabled
 
 local function toggle_format_on_save()
@@ -8,6 +19,7 @@ local function toggle_format_on_save()
 		print("Format on save disabled")
 	end
 end
+
 return {
 	{ -- Autoformat
 		"stevearc/conform.nvim",

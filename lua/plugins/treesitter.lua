@@ -1,33 +1,50 @@
+--- `treesitter_config.lua`: Configuration for enhanced syntax highlighting and code manipulation in Neovim using `nvim-treesitter`.
+-- This file sets up the following features:
+-- 1. **Treesitter Syntax Highlighting**: Enables advanced syntax highlighting using Treesitter for a variety of languages, ensuring more accurate and context-aware highlighting than traditional methods.
+-- 2. **Rainbow Brackets**: Adds rainbow-colored brackets for better visibility and readability, especially in nested code structures.
+-- 3. **Indentation Management**: Configures automatic indentation based on the syntax tree, with specific settings for certain file types (e.g., disabling for YAML).
+-- 4. **Automatic Parser Installation**: Ensures necessary language parsers are installed and up-to-date, enabling Treesitter functionality across various languages.
+
 return {
-  { -- Highlight, edit, and navigate code
-    'nvim-treesitter/nvim-treesitter',
-    build = ':TSUpdate',
-    opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
-      -- Autoinstall languages that are not installed
-      auto_install = true,
-      highlight = {
-        enable = true,
-        -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
-        --  If you are experiencing weird indenting issues, add the language to
-        --  the list of additional_vim_regex_highlighting and disabled languages for indent.
-        additional_vim_regex_highlighting = { 'ruby' },
-      },
-      indent = { enable = true, disable = { 'ruby' } },
-    },
-    config = function(_, opts)
-      -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
-
-      ---@diagnostic disable-next-line: missing-fields
-      require('nvim-treesitter.configs').setup(opts)
-
-      -- There are additional nvim-treesitter modules that you can use to interact
-      -- with nvim-treesitter. You should go explore a few and see what interests you:
-      --
-      --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
-      --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
-      --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-    end,
-  },
+	{
+		"nvim-treesitter/nvim-treesitter",
+		cond = not vim.g.vscode,
+		build = ":TSUpdate", -- Ensures all installed parsers are up-to-date
+		event = { "BufReadPost", "BufNewFile" }, -- Load Treesitter when a buffer is read or created
+		opts = {
+			highlight = {
+				enable = true,
+				use_languagetree = true,
+				additional_vim_regex_highlighting = true, -- Uses traditional regex highlighting in addition to Treesitter
+			},
+			rainbow = {
+				enable = true,
+				extended_mode = true, -- Enables rainbow brackets for all bracket-like structures
+				max_file_lines = 10000, -- Limits rainbow bracket functionality to files with fewer than 10,000 lines
+			},
+			indent = {
+				enable = true,
+				disable = { "yaml" }, -- Disables automatic indentation for YAML files
+			},
+			ensured_install = {
+				"bash",
+				"c",
+				"cpp",
+				"lua",
+				"markdown",
+				"markdown_inline",
+				"python",
+				"regex",
+				"rust",
+				"vim",
+				"vimdoc",
+				"json",
+				"yaml",
+			},
+			auto_install = true, -- Automatically install missing language parsers
+		},
+		config = function(_, opts)
+			require("nvim-treesitter.configs").setup(opts)
+		end,
+	},
 }
--- vim: ts=2 sts=2 sw=2 et
