@@ -39,6 +39,8 @@ require("lazy").setup({
 	require("plugins/flash"),
 
 	require("plugins/autopairs"),
+	
+  require("plugins/smartsplit"),
 
 	-- TODO: Go through theses plugins
 	-- 1 Check why tabs length are different in some files
@@ -52,7 +54,6 @@ require("lazy").setup({
 
 	require("plugins/zen_mode"),
 	-- require 'kickstart.plugins.debug',
-	-- require 'kickstart.plugins.lint',
 }, {
 	ui = {
 		-- If you are using a Nerd Font: set icons to an empty table which will use the
