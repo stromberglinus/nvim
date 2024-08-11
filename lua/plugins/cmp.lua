@@ -88,6 +88,7 @@ return {
 					["<S-Tab>"] = cmp.mapping.select_prev_item(),
 				}),
 				sources = cmp.config.sources({
+					{ name = "lazydev" }, -- LSP source
 					{ name = "nvim_lsp" }, -- LSP source
 					{ name = "luasnip" }, -- Snippet source
 					{ name = "buffer" }, -- Buffer source

@@ -45,7 +45,6 @@ require("lazy").setup({
 	-- TODO: Go through theses plugins
 	-- 1 Check why tabs length are different in some files
 	-- 2 Check why indent_blankline somtimes don't work
-	-- 3 Check why i can't go "round" through splitet windows.
 	-- 5 Add Obsidian plugin
 
 	require("plugins/alpha"),

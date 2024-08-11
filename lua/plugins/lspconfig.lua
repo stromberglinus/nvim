@@ -17,7 +17,7 @@ return {
 		ft = "lua",
 		opts = {
 			library = {
-				{ path = "luvit-meta/library", words = { "vim%.uv" } }, -- Load luvit types when 'vim.uv' is found
+				"luvit-meta/library",
 			},
 		},
 	},
