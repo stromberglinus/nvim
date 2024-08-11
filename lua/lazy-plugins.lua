@@ -39,12 +39,12 @@ require("lazy").setup({
 	require("plugins/flash"),
 
 	require("plugins/autopairs"),
-	
-  require("plugins/smartsplit"),
 
+	require("plugins/smartsplit"),
+
+	require("plugins/lualine"),
 	-- TODO: Go through theses plugins
-	-- 1 Check why tabs length are different in some files
-	-- 2 Check why indent_blankline somtimes don't work
+	-- 3 Fix inlay hints
 	-- 5 Add Obsidian plugin
 
 	require("plugins/alpha"),

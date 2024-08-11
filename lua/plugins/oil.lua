@@ -2,7 +2,7 @@
 -- This file sets up the following features:
 -- 1. **Directory Navigation**: Automatically changes the working directory if a directory is opened via command-line arguments.
 -- 2. **Keybindings**: Provides a set of key mappings to interact with the file explorer, including opening files, splitting windows, previewing files, and toggling hidden files.
---    - **Keybindings**: 
+--    - **Keybindings**:
 --      - `<leader>e`: Opens the file explorer.
 --      - `<leader>E`: Opens the file explorer at the current working directory.
 -- 3. **UI Customization**: Configures the look and feel of the explorer with options like icons, floating windows, and handling of hidden files.
@@ -12,7 +12,7 @@ return {
     {
         "stevearc/oil.nvim",
         dependencies = {
-            "nvim-tree/nvim-web-devicons",  -- Adds file type icons to the explorer
+            "nvim-tree/nvim-web-devicons", -- Adds file type icons to the explorer
         },
         init = function()
             -- Automatically change the working directory if the argument is a directory
@@ -55,10 +55,10 @@ return {
         },
         opts = {
             columns = {
-                "icon",  -- Display file icons in the explorer
+                "icon", -- Display file icons in the explorer
             },
-            default_file_explorer = true,  -- Replace default file explorer with Oil
-            restore_win_options = true,  -- Restore window options after closing Oil
+            default_file_explorer = true, -- Replace default file explorer with Oil
+            restore_win_options = true, -- Restore window options after closing Oil
             skip_confirm_for_simple_edits = false,
             delete_to_trash = false,
             promt_save_on_select_new_entry = true,
@@ -76,14 +76,14 @@ return {
                 ["~"] = "actions.tcd",
                 ["g."] = "actions.toggle_hidden",
             },
-            use_default_keymaps = false,  -- Disable default key mappings
+            use_default_keymaps = false, -- Disable default key mappings
             view_options = {
-                show_hidden = false,  -- Do not show hidden files by default
+                show_hidden = false, -- Do not show hidden files by default
                 is_hidden_file = function(name, _)
-                    return vim.startswith(name, ".")  -- Define hidden files as those starting with "."
+                    return vim.startswith(name, ".") -- Define hidden files as those starting with "."
                 end,
                 is_always_hidden = function(_, _)
-                    return false  -- No files are always hidden
+                    return false -- No files are always hidden
                 end,
             },
             float = {
@@ -124,4 +124,3 @@ return {
         end,
     },
 }
-

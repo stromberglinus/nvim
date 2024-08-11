@@ -6,6 +6,7 @@ return {
         plus = "",
         clock = "󰥔  ",
         python = "",
+        modified = "",
     },
     separator = {
         full = {

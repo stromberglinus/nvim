@@ -93,6 +93,6 @@ vim.opt.listchars:append({
 })
 
 -- Enable spell checking in the current window
-vim.wo.spell = true
+vim.o.spell = true
 
 -- vim: ts=2 sts=2 sw=2 et
