@@ -41,6 +41,8 @@ require("lazy").setup({
 	require("plugins/autopairs"),
 
 	require("plugins/smartsplit"),
+	
+  require("plugins/trouble"),
 
 	-- TODO: Go through theses plugins
 	-- 3 Fix inlay hints

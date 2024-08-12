@@ -13,6 +13,7 @@ return {
                 { "<leader>f", group = "Find" },
                 { "<leader>q", group = "Diagnostics" },
                 { "<leader>t", group = "Toggle" },
+                { "<leader>x", group = "Trouble" },
                 { "<leader>g", group = "Git hunk", mode = { "n", "v" } },
             })
         end,
