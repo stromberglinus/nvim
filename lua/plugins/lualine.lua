@@ -1,40 +1,14 @@
 --- `lualine_config.lua`: Configuration for Neovim's statusline using `lualine.nvim`.
 -- This file configures lualine with various sections and extensions to provide a dynamic and informative statusline.
--- It integrates with several plugins like `trouble.nvim`, `noice.nvim`, and `swenv.nvim` for enhanced statusline features.
---
--- Features:
--- 1. **Dynamic Statusline**: Customizes the statusline with sections for mode, Git branch, current working directory, Python virtual environment, and more.
--- 2. **Trouble Integration**: Displays LSP document symbols in the statusline.
--- 3. **Noice Integration**: Shows the current command and mode from `noice.nvim` in the statusline.
--- 4. **Session Status**: Indicates whether a session is active or inactive.
--- 5. **Python Virtual Environment**: Shows the active Python virtual environment in the statusline when working with Python files.
--- 6. **Clock**: Displays the current time in the statusline.
 
 local icons = require("utils.icons")
 
 return {
     {
         "nvim-lualine/lualine.nvim",
-        dependencies = {
-            "AckslD/swenv.nvim", -- Python virtual environment management
-            "folke/noice.nvim", -- Enhanced command line and notification management
-            "folke/trouble.nvim", -- Enhanced diagnostics and quickfix management
-            "nvim-tree/nvim-web-devicons", -- File icons
-        },
-        lazy = true,
-        event = "BufEnter",
-        cond = not vim.g.vscode,
-        opts = function()
-            local trouble = require("trouble")
-            local symbols = trouble.statusline({
-                mode = "lsp_document_symbols",
-                groups = {},
-                title = false,
-                filter = { range = true },
-                format = "{kind_icon}{symbol.name:Normal}>",
-            })
-
-            return {
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        config = function()
+            require("lualine").setup({
                 options = {
                     icons_enabled = true,
                     theme = "auto",
@@ -52,23 +26,9 @@ return {
                             "lazy",
                             "Mason",
                         },
-                        winbar = {
-                            "spectre_panel",
-                            "Outline",
-                            "Trouble",
-                            "dapui_scopes",
-                            "dapui_breakpoints",
-                            "dapui_stacks",
-                            "dapui_console",
-                            "dapui_watches",
-                            "dapui_scopes",
-                            "dap-repl",
-                            "dashboard",
-                            "terminal",
-                            "toggleterm",
-                            "lazy",
-                        },
+                        winbar = { "Trouble", "lazy" },
                     },
+                    ignore_focus = {},
                     always_divide_middle = true,
                     globalstatus = true,
                     refresh = {
@@ -77,104 +37,43 @@ return {
                         winbar = 1000,
                     },
                 },
-                extensions = {
-                    "fzf",
-                    "fugitive",
-                    "lazy",
-                    "quickfix",
-                    "toggleterm",
-                    "trouble",
-                },
-                tabline = {
-                    lualine_a = {
-                        {
-                            "tabs",
-                            mode = 2,
-                            path = 0,
-                            use_mode_colors = true,
-                            show_modified_status = true,
-                            symbols = {
-                                modified = icons.misc.modified,
-                            },
-                        },
-                    },
-                    lualine_b = {},
-                    lualine_c = {
-                        { symbols.get, cond = symbols.has },
-                    },
-                    lualine_z = {},
-                },
                 sections = {
                     lualine_a = { "mode" },
                     lualine_b = {
+                        "branch",
                         {
-                            function()
-                                local cwd = vim.uv.cwd()
-                                local home = vim.fn.expand("~")
-                                cwd, _ = cwd:gsub(home, "~")
-                                return cwd
-                            end,
-                            padding = { left = 1, right = 1 },
-                        },
-                        { "b:gitsigns_head", icon = "" },
-                        {
-                            function()
-                                return "󰑓 "
-                                    .. (
-                                        require("resession").get_current() ~= nil and "Active"
-                                        or "Inactive"
-                                    )
-                            end,
-                        },
-                        {
-                            function()
-                                local venv = require("swenv.api").get_current_venv()
-                                return venv and string.format(icons.misc.python .. "%s", venv.name)
-                                    or ""
-                            end,
-                            cond = function()
-                                return vim.bo.filetype == "python"
-                            end,
-                        },
-                        {
-                            function()
-                                return require("plugins.lualine.copilot").get_status()
-                            end,
+                            "filename",
+                            path = 1,
                         },
                     },
                     lualine_c = {},
-                    lualine_x = {},
-                    lualine_y = {
-                        {
-                            function()
-                                return require("noice").api.statusline.mode.get()
-                            end,
-                            cond = function()
-                                return package.loaded["noice"]
-                                    and require("noice").api.statusline.mode.has()
-                            end,
-                        },
-                        {
-                            function()
-                                return require("noice").api.status.command.get()
-                            end,
-                            cond = function()
-                                return package.loaded["noice"]
-                                    and require("noice").api.status.command.has()
-                            end,
-                        },
-                        { "progress" },
-                        { "location" },
+                    lualine_x = { "encoding", "fileformat", "filetype" },
+                    lualine_y = { "progress", "location" },
+                    lualine_z = {
+                        function()
+                            return icons.misc.clock .. os.date("%B %d, %H:%M")
+                        end,
                     },
+                },
+                inactive_sections = {
+                    lualine_a = {},
+                    lualine_b = {},
+                    lualine_c = { "filename" },
+                    lualine_x = { "location" },
+                    lualine_y = {},
                     lualine_z = {
                         {
                             function()
-                                return icons.misc.clock .. os.date()
+                                return icons.misc.clock .. os.date(" %B %d, %H:%M")
                             end,
                         },
                     },
                 },
-            }
+                tabline = {},
+                winbar = {},
+                inactive_winbar = {},
+                extensions = {},
+            })
         end,
     },
 }
