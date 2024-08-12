@@ -42,7 +42,6 @@ require("lazy").setup({
 
 	require("plugins/smartsplit"),
 
-	require("plugins/lualine"),
 	-- TODO: Go through theses plugins
 	-- 3 Fix inlay hints
 	-- 5 Add Obsidian plugin
