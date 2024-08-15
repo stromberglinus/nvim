@@ -59,12 +59,18 @@ return {
                 }
             end,
             formatters_by_ft = {
+                ["_"] = { "trim_whitespace" },
                 lua = { "stylua" },
-                -- Conform can also run multiple formatters sequentially
-                -- python = { "isort", "black" },
-                --
-                -- You can use 'stop_after_first' to run the first available formatter from the list
-                -- javascript = { "prettierd", "prettier", stop_after_first = true },
+                python = { "ruff_format" },
+                css = { "stylelint" },
+                javascript = { { "prettierd", "prettier" }, { "eslint_d", "eslint" } },
+                javascriptreact = {
+                    "stylelint",
+                    { "prettierd", "prettier" },
+                    { "eslint_d", "eslint" },
+                },
+                markdown = { "markdownlint" },
+                cpp = { "clang-format" },
             },
         },
     },
