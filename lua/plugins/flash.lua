@@ -57,30 +57,6 @@ return {
                 end,
                 desc = "Jump2D",
             },
-            {
-                "<leader>t",
-                mode = { "n", "x", "o" },
-                function()
-                    require("flash").jump()
-                end,
-                desc = "Jump",
-            },
-            {
-                "r",
-                mode = "o",
-                function()
-                    require("flash").remote()
-                end,
-                desc = "Remote",
-            },
-            {
-                "R",
-                mode = { "o", "x" },
-                function()
-                    require("flash").treesitter_search()
-                end,
-                desc = "Treesitter Search",
-            },
         },
         opts = {
             search = {
