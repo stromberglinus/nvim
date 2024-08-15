@@ -15,6 +15,7 @@
   "codicons.nvim": { "branch": "master", "commit": "8f9bced4ff3c7d8d62ff132d1912c1d5571514f7" },
   "conform.nvim": { "branch": "master", "commit": "0f4f299dfea09d2adfd7a1da05149a0844ac8eee" },
   "flash.nvim": { "branch": "main", "commit": "34c7be146a91fec3555c33fe89c7d643f6ef5cf1" },
+  "fzf-lua": { "branch": "main", "commit": "8423be12f3c1f190792e0f529dbfaf63e4816d3e" },
   "gitsigns.nvim": { "branch": "main", "commit": "562dc47189ad3c8696dbf460d38603a74d544849" },
   "indent-blankline.nvim": { "branch": "master", "commit": "dddb5d21811c319eb6e51a993d8fb44b193aae3f" },
   "lazy.nvim": { "branch": "main", "commit": "077102c5bfc578693f12377846d427f49bc50076" },

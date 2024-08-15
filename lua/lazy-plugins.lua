@@ -8,6 +8,8 @@ require("lazy").setup({
 
     require("lua.plugins.which-key"),
 
+    require("lua.plugins.fzf"),
+
     require("lua.plugins.telescope.telescope"),
 
     require("lua.plugins.noice.noice"),
