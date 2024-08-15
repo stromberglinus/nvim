@@ -7,6 +7,7 @@ External Requirements:
 - [ripgrep](https://github.com/BurntSushi/ripgrep#installation)
 - Clipboard tool (xclip/xsel/win32yank or other depending on platform)
 - A [Nerd Font](https://www.nerdfonts.com/): optional, provides various icons
+- For windows you will need to install less and bat to get preview from fzf
 
 
 #### Windows Installation
@@ -44,8 +45,10 @@ winget install Chocolatey
 3. install all requirements using choco, exit previous cmd and
 open a new one so that choco path is set, and run in cmd as **admin**:
 ```
-choco install -y git ripgrep wget fd unzip gzip mingw make
+choco install -y git ripgrep wget fd unzip gzip mingw make less bat
 ```
+
+4. clone nvim config to \AppData\Local\
 </details>
 <details><summary>WSL (Windows Subsystem for Linux)</summary>
 
@@ -57,8 +60,6 @@ sudo apt update
 sudo apt install make gcc ripgrep unzip git xclip neovim
 ```
 </details>
-
-3. Put nvim config at <user>\AppData\Local\nvim
 
 #### Linux Install
 <details><summary>Ubuntu Install Steps</summary>
