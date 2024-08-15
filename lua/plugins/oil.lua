@@ -12,7 +12,7 @@ return {
     {
         "stevearc/oil.nvim",
         dependencies = {
-            "nvim-tree/nvim-web-devicons", -- Adds file type icons to the explorer
+            "echasnovski/mini.icons", -- Adds file type icons to the explorer
         },
         init = function()
             -- Automatically change the working directory if the argument is a directory
