@@ -1,61 +1,48 @@
 -- [[ Configure and install plugins ]]
---
---  To check the current status of your plugins, run
---    :Lazy
---
---  Press `?` in this menu for help. Use `:q` to close the window
---
---  To update plugins run
---    :Lazy update
---
-
 require("lazy").setup({
     "tpope/vim-sleuth",
 
-    require("plugins/catppuccin"),
+    require("lua.plugins.catppuccin"),
 
-    require("plugins/gitsigns"),
+    require("lua.plugins.gitsigns"),
 
-    require("plugins/which-key"),
+    require("lua.plugins.which-key"),
 
-    require("plugins/telescope/telescope"),
+    require("lua.plugins.telescope.telescope"),
 
-    require("plugins/noice/noice"),
+    require("lua.plugins.noice.noice"),
 
-    require("plugins/lspconfig"),
+    require("lua.plugins.lsp.init"),
 
-    require("plugins/conform"),
+    require("lua.plugins.lsp_lines"),
 
-    require("plugins/cmp"),
+    require("lua.plugins.conform"),
 
-    require("plugins/todo-comments"),
+    require("lua.plugins.cmp"),
 
-    require("plugins/mini"),
+    require("lua.plugins.todo-comments"),
 
-    require("plugins/treesitter"),
+    require("lua.plugins.mini"),
 
-    require("plugins/oil"),
+    require("lua.plugins.treesitter"),
 
-    require("plugins/flash"),
+    require("lua.plugins.oil"),
 
-    require("plugins/autopairs"),
+    require("lua.plugins.flash"),
 
-    require("plugins/smartsplit"),
+    require("lua.plugins.autopairs"),
 
-    require("plugins/trouble"),
+    require("lua.plugins.smartsplit"),
 
-    require("plugins/lualine"),
+    require("lua.plugins.trouble"),
 
-    -- TODO: Go through theses plugins
-    -- 3 Fix inlay hints
-    -- 5 Add Obsidian plugin
+    require("lua.plugins.lualine"),
 
-    require("plugins/alpha"),
+    require("lua.plugins.alpha"),
 
-    require("plugins/indent_blankline"),
+    require("lua.plugins.indent_blankline"),
 
-    require("plugins/zen_mode"),
-    -- require 'kickstart.plugins.debug',
+    require("lua.plugins.zen_mode"),
 }, {
     ui = {
         -- If you are using a Nerd Font: set icons to an empty table which will use the
