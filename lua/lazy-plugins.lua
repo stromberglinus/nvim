@@ -45,6 +45,8 @@ require("lazy").setup({
     require("lua.plugins.indent_blankline"),
 
     require("lua.plugins.zen_mode"),
+
+    require("lua.plugins.hydra.init"),
 }, {
     ui = {
         -- If you are using a Nerd Font: set icons to an empty table which will use the
