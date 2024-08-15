@@ -18,68 +18,69 @@ return {
             },
             on_attach = function(bufnr)
                 local gitsigns = require("gitsigns")
+                local wk = require("which-key")
 
                 -- Enable current line blame by default
                 gitsigns.toggle_current_line_blame(true)
 
-                local function map(mode, l, r, opts)
-                    opts = opts or {}
-                    opts.buffer = bufnr
-                    vim.keymap.set(mode, l, r, opts)
-                end
+                wk.add({
 
-                -- Navigation
-                map("n", "]c", function()
-                    if vim.wo.diff then
-                        vim.cmd.normal({ "]c", bang = true })
-                    else
-                        gitsigns.nav_hunk("next")
-                    end
-                end, { desc = "Jump to next git [c]hange" })
-
-                map("n", "[c", function()
-                    if vim.wo.diff then
-                        vim.cmd.normal({ "[c", bang = true })
-                    else
-                        gitsigns.nav_hunk("prev")
-                    end
-                end, { desc = "Jump to previous git [c]hange" })
-
-                -- Actions
-                -- visual mode
-                map("v", "<leader>hs", function()
-                    gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
-                end, { desc = "stage git hunk" })
-                map("v", "<leader>hr", function()
-                    gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
-                end, { desc = "reset git hunk" })
-                -- normal mode
-                map("n", "<leader>gs", gitsigns.stage_hunk, { desc = "Stage hunk" })
-                map("n", "<leader>gr", gitsigns.reset_hunk, { desc = "Reset hunk" })
-                map("n", "<leader>gS", gitsigns.stage_buffer, { desc = "Stage buffer" })
-                map("n", "<leader>gu", gitsigns.undo_stage_hunk, { desc = "Undo stage hunk" })
-                map("n", "<leader>gR", gitsigns.reset_buffer, { desc = "Reset buffer" })
-                map("n", "<leader>gp", gitsigns.preview_hunk, { desc = "Preview hunk" })
-                map("n", "<leader>gk", gitsigns.prev_hunk, { desc = "Previous hunk" })
-                map("n", "<leader>gj", gitsigns.next_hunk, { desc = "Next hunk" })
-                map("n", "<leader>gb", gitsigns.blame_line, { desc = "Blame line" })
-                map("n", "<leader>gd", gitsigns.diffthis, { desc = "Diff against index" })
-                map("n", "<leader>gD", function()
-                    gitsigns.diffthis("@")
-                end, { desc = "Diff against last commit" })
-                -- Toggles
-                map(
-                    "n",
-                    "<leader>tb",
-                    gitsigns.toggle_current_line_blame,
-                    { desc = "Toggle git show blame line" }
-                )
-                map(
-                    "n",
-                    "<leader>tD",
-                    gitsigns.toggle_deleted,
-                    { desc = "Toggle git show deleted" }
-                )
+                    { "<leader>g", buffer = 1, group = "Git" },
+                    {
+                        "<leader>gD",
+                        gitsigns.diffthis("@"),
+                        buffer = 1,
+                        desc = "Diff against last commit",
+                    },
+                    { "<leader>gR", gitsigns.reset_buffer, buffer = bufnr, desc = "Reset buffer" },
+                    { "<leader>gS", gitsigns.stage_buffer, buffer = bufnr, desc = "Stage buffer" },
+                    { "<leader>gb", gitsigns.blame_line, buffer = bufnr, desc = "Blame line" },
+                    {
+                        "<leader>gd",
+                        gitsigns.diffthis,
+                        buffer = bufnr,
+                        desc = "Diff against index",
+                    },
+                    { "<leader>gj", gitsigns.next_hunk, buffer = bufnr, desc = "Next hunk" },
+                    { "<leader>gk", gitsigns.prev_hunk, buffer = bufnr, desc = "Previous hunk" },
+                    { "<leader>gp", gitsigns.preview_hunk, buffer = bufnr, desc = "Preview hunk" },
+                    { "<leader>gr", gitsigns.reset_hunk, buffer = bufnr, desc = "Reset hunk" },
+                    { "<leader>gs", gitsigns.stage_hunk, buffer = bufnr, desc = "Stage hunk" },
+                    {
+                        "<leader>gu",
+                        gitsigns.undo_stage_hunk,
+                        buffer = bufnr,
+                        desc = "Undo stage hunk",
+                    },
+                    { "<leader>h", buffer = bufnr, group = "Git hunk" },
+                    { "<leader>t", buffer = bufnr, group = "Toggle" },
+                    {
+                        "<leader>tD",
+                        gitsigns.toggle_deleted,
+                        buffer = bufnr,
+                        desc = "Toggle git show deleted",
+                    },
+                    {
+                        "<leader>tb",
+                        gitsigns.toggle_current_line_blame,
+                        buffer = bufnr,
+                        desc = "Toggle git show blame line",
+                    },
+                    {
+                        "<leader>hr",
+                        gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") }),
+                        buffer = bufnr,
+                        desc = "Reset hunk",
+                        mode = "v",
+                    },
+                    {
+                        "<leader>hs",
+                        gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") }),
+                        buffer = bufnr,
+                        desc = "Stage hunk",
+                        mode = "v",
+                    },
+                })
             end,
         },
     },
