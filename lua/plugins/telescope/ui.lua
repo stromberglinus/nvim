@@ -23,6 +23,22 @@ M.layouts = {
         width = 0.5,
         height = 0.4,
     },
+    lsp = {
+
+        horizontal = {
+            preview_cutoff = 150,
+            preview_width = 100,
+            height = 0.9,
+            width = 180,
+        },
+        vertical = {
+            height = 0.8,
+            width = 160,
+            preview_cutoff = 30,
+            preview_height = 0.7,
+            mirror = false,
+        },
+    },
 }
 
 M.borderchars = {

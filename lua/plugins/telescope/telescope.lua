@@ -84,6 +84,56 @@ return {
                         layout_config = ui.layouts.vertical,
                     },
                 },
+                lsp_references = {
+                    initial_mode = "normal",
+                    layout_config = ui.layouts.lsp,
+                    layout_strategy = "vertical",
+                },
+                lsp_incoming_calls = {
+                    initial_mode = "normal",
+                    layout_config = ui.layouts.lsp,
+                    layout_strategy = "vertical",
+                },
+                lsp_outgoing_calls = {
+                    initial_mode = "normal",
+                    layout_config = ui.layouts.lsp,
+                    layout_strategy = "vertical",
+                },
+                lsp_definitions = {
+                    initial_mode = "normal",
+                    layout_config = ui.layouts.lsp,
+                    layout_strategy = "vertical",
+                },
+                lsp_type_definitions = {
+                    initial_mode = "normal",
+                    layout_config = ui.layouts.lsp,
+                    layout_strategy = "vertical",
+                },
+                lsp_implementations = {
+                    initial_mode = "normal",
+                    layout_config = ui.layouts.lsp,
+                    layout_strategy = "vertical",
+                },
+                lsp_document_symbols = {
+                    initial_mode = "normal",
+                    layout_config = ui.layouts.lsp,
+                    layout_strategy = "vertical",
+                },
+                lsp_workspace_symbols = {
+                    initial_mode = "normal",
+                    layout_config = ui.layouts.lsp,
+                    layout_strategy = "vertical",
+                },
+                lsp_dynamic_workspace_symbols = {
+                    initial_mode = "normal",
+                    layout_config = ui.layouts.lsp,
+                    layout_strategy = "vertical",
+                },
+                diagnostics = {
+                    initial_mode = "normal",
+                    layout_config = ui.layouts.lsp,
+                    layout_strategy = "vertical",
+                },
             })
 
             -- Enable extensions
