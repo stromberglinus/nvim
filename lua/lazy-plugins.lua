@@ -28,8 +28,6 @@ require("lazy").setup({
 
     require("lua.plugins.treesitter"),
 
-    require("lua.plugins.oil"),
-
     require("lua.plugins.flash"),
 
     require("lua.plugins.autopairs"),
