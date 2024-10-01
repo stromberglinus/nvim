@@ -2,51 +2,51 @@
 require("lazy").setup({
     "tpope/vim-sleuth",
 
-    require("lua.plugins.catppuccin"),
+    require("plugins.catppuccin"),
 
-    require("lua.plugins.gitsigns"),
+    require("plugins.gitsigns"),
 
-    require("lua.plugins.which-key"),
+    require("plugins.which-key"),
 
-    require("lua.plugins.fzf"),
+    require("plugins.fzf"),
 
-    require("lua.plugins.telescope.telescope"),
+    require("plugins.telescope.telescope"),
 
-    require("lua.plugins.noice.noice"),
+    require("plugins.noice.noice"),
 
-    require("lua.plugins.lsp.init"),
+    require("plugins.lsp.init"),
 
-    require("lua.plugins.lsp_lines"),
+    require("plugins.lsp_lines"),
 
-    require("lua.plugins.conform"),
+    require("plugins.conform"),
 
-    require("lua.plugins.cmp"),
+    require("plugins.cmp"),
 
-    require("lua.plugins.todo-comments"),
+    require("plugins.todo-comments"),
 
-    require("lua.plugins.mini"),
+    require("plugins.mini"),
 
-    require("lua.plugins.treesitter"),
+    require("plugins.treesitter"),
 
-    require("lua.plugins.flash"),
+    require("plugins.flash"),
 
-    require("lua.plugins.autopairs"),
+    require("plugins.autopairs"),
 
-    require("lua.plugins.smartsplit"),
+    require("plugins.smartsplit"),
 
-    require("lua.plugins.trouble"),
+    require("plugins.trouble"),
 
-    require("lua.plugins.lualine"),
+    require("plugins.lualine"),
 
-    require("lua.plugins.alpha"),
+    require("plugins.alpha"),
 
-    require("lua.plugins.indent_blankline"),
+    require("plugins.indent_blankline"),
 
-    require("lua.plugins.zen_mode"),
+    require("plugins.zen_mode"),
 
-    require("lua.plugins.hydra.init"),
+    require("plugins.hydra.init"),
 
-    require("lua.plugins.toggleterm"),
+    require("plugins.toggleterm"),
 }, {
     ui = {
         -- If you are using a Nerd Font: set icons to an empty table which will use the
