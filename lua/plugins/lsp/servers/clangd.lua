@@ -19,7 +19,7 @@ return {
         "--completion-style=detailed",
         "--malloc-trim",
         "--all-scopes-completion=true",
-        "--query-driver=" .. "/usr/bin/clang, /usr/bin/clang++",
+        "--query-driver=" .. "/opt/sdks/**/*linux-g++",
         "--header-insertion=iwyu",
     },
 }
