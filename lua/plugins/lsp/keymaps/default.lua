@@ -43,12 +43,13 @@ return function(bufnr)
         { "gi", vim.lsp.buf.implementation, buffer = bufnr, desc = "Go to implementation" },
         {
             "gr",
-            require("telescope.builtin").lsp_references({
-                -- fname_width = require("utils.sizes").fname_width,
-                include_declaration = false,
-                include_current_line = true,
-                jump_type = "never",
-            }),
+            require("fzf-lua").lsp_references,
+            -- require("telescope.builtin").lsp_references({
+            --     -- fname_width = require("utils.sizes").fname_width,
+            --     include_declaration = false,
+            --     include_current_line = true,
+            --     jump_type = "never",
+            -- }),
             buffer = bufnr,
             desc = "Go to references",
         },
