@@ -5,9 +5,9 @@ return {
         event = "BufEnter",
         keys = {
             {
-                "<leader>Wa",
+                "<leader>ta",
                 "<cmd>ASToggle<CR>",
-                desc = "Toggle autosave",
+                desc = "Toggle autosave(session)",
                 mode = "n",
             },
         },
@@ -50,58 +50,58 @@ return {
         dependencies = {
             "tiagovla/scope.nvim",
         },
-        keys = {
-            {
-                "<leader>Ws",
-                function()
-                    require("resession").save(vim.fn.getcwd(), { notify = true })
-                end,
-                mode = "n",
-                desc = "Save session",
-            },
-            {
-                "<leader>Wl",
-                function()
-                    local resession = require("resession")
-
-                    local project_path = vim.fn.getcwd()
-                    local pattern = "/"
-                    if vim.fn.has("win32") == 1 then
-                        pattern = "[\\:]"
-                    end
-                    local project_name = project_path:gsub(pattern, "_")
-                    local new_session = true
-                    for _, session in pairs(resession.list()) do
-                        if session == project_name then
-                            new_session = false
-                            break
-                        end
-                    end
-                    if new_session then
-                        resession.save(project_path, { attach = false, notify = true })
-                    else
-                        resession.load(project_path, { attach = false, notify = true })
-                    end
-                    local shada = require("utils.shada").get_current_shada()
-                    vim.o.shadafile = shada
-                    local f = io.open(shada, "r")
-                    if f == nil then
-                        vim.cmd.wshada()
-                    end
-                    pcall(vim.cmd.rshada, { bang = true })
-                end,
-                mode = "n",
-                desc = "Load session",
-            },
-            {
-                "<leader>Wd",
-                function()
-                    require("resession").delete(vim.fn.getcwd(), { notify = true })
-                end,
-                mode = "n",
-                desc = "Delete session",
-            },
-        },
+        -- keys = {
+        --     {
+        --         "<leader>Ws",
+        --         function()
+        --             require("resession").save(vim.fn.getcwd(), { notify = true })
+        --         end,
+        --         mode = "n",
+        --         desc = "Save session",
+        --     },
+        --     {
+        --         "<leader>Wl",
+        --         function()
+        --             local resession = require("resession")
+        --
+        --             local project_path = vim.fn.getcwd()
+        --             local pattern = "/"
+        --             if vim.fn.has("win32") == 1 then
+        --                 pattern = "[\\:]"
+        --             end
+        --             local project_name = project_path:gsub(pattern, "_")
+        --             local new_session = true
+        --             for _, session in pairs(resession.list()) do
+        --                 if session == project_name then
+        --                     new_session = false
+        --                     break
+        --                 end
+        --             end
+        --             if new_session then
+        --                 resession.save(project_path, { attach = false, notify = true })
+        --             else
+        --                 resession.load(project_path, { attach = false, notify = true })
+        --             end
+        --             local shada = require("utils.shada").get_current_shada()
+        --             vim.o.shadafile = shada
+        --             local f = io.open(shada, "r")
+        --             if f == nil then
+        --                 vim.cmd.wshada()
+        --             end
+        --             pcall(vim.cmd.rshada, { bang = true })
+        --         end,
+        --         mode = "n",
+        --         desc = "Load session",
+        --     },
+        --     {
+        --         "<leader>Wd",
+        --         function()
+        --             require("resession").delete(vim.fn.getcwd(), { notify = true })
+        --         end,
+        --         mode = "n",
+        --         desc = "Delete session",
+        --     },
+        -- },
         init = function()
             local resession = require("resession")
             vim.api.nvim_create_autocmd("VimLeavePre", {
