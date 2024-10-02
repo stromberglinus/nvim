@@ -95,4 +95,39 @@ vim.opt.listchars:append({
 -- Enable spell checking in the current window
 vim.o.spell = true
 
--- vim: ts=2 sts=2 sw=2 et
+vim.cmd([[
+    autocmd FileType gitcommit setlocal textwidth=72
+    autocmd FileType gitcommit setlocal colorcolumn=+1
+
+    autocmd FileType minifiles setlocal conceallevel=2
+
+    autocmd FileType c setlocal textwidth=80
+    autocmd FileType c setlocal colorcolumn=+1
+
+    autocmd FileType cpp setlocal textwidth=80
+    autocmd FileType cpp setlocal colorcolumn=+1
+
+    autocmd FileType python setlocal textwidth=120
+    autocmd FileType python setlocal colorcolumn=+1
+
+    autocmd FileType lua setlocal textwidth=100
+    autocmd FileType lua setlocal colorcolumn=+1
+
+    autocmd FileType qf setlocal nonu
+    autocmd FileType qf setlocal nornu
+
+    autocmd FileType markdown setlocal conceallevel=2
+    autocmd FileType markdown setlocal textwidth=120
+    autocmd FileType markdown setlocal colorcolumn=+1
+
+    autocmd User TelescopePreviewerLoaded setlocal wrap
+    autocmd User TelescopePreviewerLoaded setlocal wrap
+
+    autocmd CmdwinEnter * nnoremap <CR> <CR>
+
+    autocmd BufReadPost quickfix nnoremap <CR> <CR>
+
+    autocmd TermOpen * setlocal nospell
+    autocmd TermOpen * setlocal nornu
+    autocmd TermOpen * setlocal nonu
+]])
