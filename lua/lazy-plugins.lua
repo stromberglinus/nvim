@@ -12,6 +12,10 @@ require("lazy").setup({
 
     require("plugins.telescope.telescope"),
 
+    require("plugins.session"),
+
+    require("plugins.incline"),
+
     require("plugins.noice.noice"),
 
     require("plugins.lsp.init"),
