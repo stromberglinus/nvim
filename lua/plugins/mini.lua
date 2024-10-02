@@ -23,7 +23,7 @@ return {
                 ["<"] = { input = { "%b<>", "^.().*().$" }, output = { left = "<", right = ">" } },
             },
         },
-        config = function(_,opts)
+        config = function(_, opts)
             require("mini.surround").setup(opts)
         end,
     },
@@ -39,8 +39,8 @@ return {
         keys = {
             {
                 "<leader>e",
-                "<cmd>lua MiniFiles.open(MiniFiles.get_latest_path())<cr>",
-                desc = "Files",
+                "<cmd>lua MiniFiles.open(vim.api.nvim_buf_get_name(0), false)<cr>",
+                desc = "Explorer current file",
                 mode = "n",
             },
             {
@@ -51,8 +51,8 @@ return {
             },
             {
                 "<leader>EB",
-                "<cmd>lua MiniFiles.open(vim.api.nvim_buf_get_name(0), false)<cr>",
-                desc = "Buffer Dir",
+                "<cmd>lua MiniFiles.open(MiniFiles.get_latest_path())<cr>",
+                desc = "Latest path",
                 mode = "n",
             },
             {
@@ -62,6 +62,7 @@ return {
                 mode = "n",
             },
         },
+
         -- init = file_functions.init,
         opts = {
             options = {
@@ -86,7 +87,7 @@ return {
             -- }
         },
 
-        config = function(_,opts)
+        config = function(_, opts)
             require("mini.files").setup(opts)
         end,
     },
