@@ -7,7 +7,7 @@ return function(bufnr)
         },
         O = {
             "<cmd>vsplit | ClangdSwitchSourceHeader<CR>",
-            "Switch Header/Source",
+            "Switch Header/Source (vsplit)",
         },
     }, {
         prefix = "<leader>",
