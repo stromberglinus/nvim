@@ -1,10 +1,11 @@
 -- [[ Configure and install plugins ]]
 require("lazy").setup({
     "tpope/vim-sleuth",
-
     require("plugins.catppuccin"),
 
-    require("plugins.gitsigns"),
+    require("plugins.git.gitsigns"),
+
+    require("plugins.git.diffview"),
 
     require("plugins.which-key"),
 

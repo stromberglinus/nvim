@@ -35,12 +35,6 @@ return {
                     { "<leader>gR", gitsigns.reset_buffer, buffer = bufnr, desc = "Reset buffer" },
                     { "<leader>gS", gitsigns.stage_buffer, buffer = bufnr, desc = "Stage buffer" },
                     { "<leader>gb", gitsigns.blame_line, buffer = bufnr, desc = "Blame line" },
-                    {
-                        "<leader>gd",
-                        gitsigns.diffthis,
-                        buffer = bufnr,
-                        desc = "Diff against index",
-                    },
                     { "<leader>gj", gitsigns.next_hunk, buffer = bufnr, desc = "Next hunk" },
                     { "<leader>gk", gitsigns.prev_hunk, buffer = bufnr, desc = "Previous hunk" },
                     { "<leader>gp", gitsigns.preview_hunk, buffer = bufnr, desc = "Preview hunk" },
