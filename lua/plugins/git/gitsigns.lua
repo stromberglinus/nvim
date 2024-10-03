@@ -26,12 +26,6 @@ return {
                 wk.add({
 
                     { "<leader>g", buffer = 1, group = "Git" },
-                    {
-                        "<leader>gD",
-                        gitsigns.diffthis("@"),
-                        buffer = 1,
-                        desc = "Diff against last commit",
-                    },
                     { "<leader>gR", gitsigns.reset_buffer, buffer = bufnr, desc = "Reset buffer" },
                     { "<leader>gS", gitsigns.stage_buffer, buffer = bufnr, desc = "Stage buffer" },
                     { "<leader>gb", gitsigns.blame_line, buffer = bufnr, desc = "Blame line" },

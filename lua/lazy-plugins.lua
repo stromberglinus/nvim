@@ -7,6 +7,8 @@ require("lazy").setup({
 
     require("plugins.git.diffview"),
 
+    require("plugins.git.neogit"),
+
     require("plugins.which-key"),
 
     require("plugins.fzf"),
