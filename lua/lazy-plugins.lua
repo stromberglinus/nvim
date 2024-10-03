@@ -51,6 +51,8 @@ require("lazy").setup({
     require("plugins.hydra.init"),
 
     require("plugins.toggleterm"),
+
+    require("plugins.grug"),
 }, {
     ui = {
         -- If you are using a Nerd Font: set icons to an empty table which will use the

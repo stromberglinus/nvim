@@ -44,8 +44,11 @@ winget install Chocolatey
 
 3. install all requirements using choco, exit previous cmd and
 open a new one so that choco path is set, and run in cmd as **admin**:
+(optional use ast-grep install with scoop)
 ```
 choco install -y git ripgrep wget fd unzip gzip mingw make less bat
+
+
 ```
 
 4. clone nvim config to \AppData\Local\
