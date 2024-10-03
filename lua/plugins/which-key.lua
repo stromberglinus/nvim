@@ -15,6 +15,7 @@ return {
                 { "<leader>g", group = "Git" },
                 { "<leader>f", group = "Find" },
                 { "<leader>E", group = "File explorer" },
+                { "<leader>D", group = "Debug" },
                 { "<leader>q", group = "Messages" },
                 { "<leader>r", group = "Refactor" },
                 { "<leader>t", group = "Toggle" },
