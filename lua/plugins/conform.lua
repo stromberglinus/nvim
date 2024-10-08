@@ -1,27 +1,5 @@
---- `autoformat.lua`: Configuration for autoformatting in Neovim using `conform.nvim`.
--- This file sets up the following features:
--- 1. **Autoformatting on Save**: Configures automatic code formatting when saving files,
---    with the ability to toggle this feature on and off using a keybinding.
---    - **Keybinding**: Use `<leader>tq` to toggle autoformatting on save.
---    - **Manual Formatting**: You can manually trigger formatting with `<leader>d`.
--- 2. **Formatter Configuration**: Specifies different formatters for various file types, such as `stylua` for Lua.
---    - **Conditional Formatting**: Disables LSP-based formatting for certain file types (e.g., C and C++),
---      based on whether format on save is enabled.
--- 3. **Customizable Formatting Behavior**: Allows you to customize the formatters and the conditions under which they run.
-
-local format_on_save_enabled = false -- Start with format on save disabled
-
-local function toggle_format_on_save()
-    format_on_save_enabled = not format_on_save_enabled
-    if format_on_save_enabled then
-        print("Format on save enabled")
-    else
-        print("Format on save disabled")
-    end
-end
-
 return {
-    { -- Autoformat
+    {
         "stevearc/conform.nvim",
         event = { "BufWritePre" },
         cmd = { "ConformInfo" },
@@ -34,24 +12,16 @@ return {
                 mode = "",
                 desc = "Format",
             },
-            {
-                "<leader>tq",
-                toggle_format_on_save,
-                mode = "n",
-                desc = "Toggle Format on Save",
-            },
         },
         opts = {
             notify_on_error = false,
             format_on_save = function(bufnr)
-                -- Check if format on save is enabled
-                if not format_on_save_enabled then
+                -- Check if format on save is enabled using OPTIONS
+                if not OPTIONS.format_on_save.value then
                     return false
                 end
 
-                -- Disable "format_on_save lsp_fallback" for languages that don't
-                -- have a well standardized coding style. You can add additional
-                -- languages here or re-enable it for the disabled ones.
+                -- Disable format on save for certain filetypes
                 local disable_filetypes = { c = true, cpp = true }
                 return {
                     timeout_ms = 500,
@@ -75,4 +45,3 @@ return {
         },
     },
 }
--- vim: ts=2 sts=2 sw=2 et
