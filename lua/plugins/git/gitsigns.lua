@@ -22,10 +22,8 @@ return {
 
                 -- Enable current line blame by default
                 gitsigns.toggle_current_line_blame(true)
-
                 wk.add({
-
-                    { "<leader>g", buffer = 1, group = "Git" },
+                    { "<leader>g", buffer = bufnr, group = "Git" },
                     { "<leader>gR", gitsigns.reset_buffer, buffer = bufnr, desc = "Reset buffer" },
                     { "<leader>gS", gitsigns.stage_buffer, buffer = bufnr, desc = "Stage buffer" },
                     { "<leader>gb", gitsigns.blame_line, buffer = bufnr, desc = "Blame line" },
@@ -56,14 +54,18 @@ return {
                     },
                     {
                         "<leader>hr",
-                        gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") }),
+                        function()
+                            gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
+                        end,
                         buffer = bufnr,
                         desc = "Reset hunk",
                         mode = "v",
                     },
                     {
                         "<leader>hs",
-                        gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") }),
+                        function()
+                            gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
+                        end,
                         buffer = bufnr,
                         desc = "Stage hunk",
                         mode = "v",
