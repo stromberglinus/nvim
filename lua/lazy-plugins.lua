@@ -51,7 +51,7 @@ require("lazy").setup({
 
     require("plugins.zen_mode"),
 
-    require("plugins.hydra.init"),
+    require("plugins.hydra"),
 
     require("plugins.toggleterm"),
 
