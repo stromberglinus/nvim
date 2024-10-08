@@ -3,14 +3,6 @@ return {
         "okuuva/auto-save.nvim",
         cond = not vim.g.vscode,
         event = "BufEnter",
-        keys = {
-            {
-                "<leader>ta",
-                "<cmd>ASToggle<CR>",
-                desc = "Toggle autosave(session)",
-                mode = "n",
-            },
-        },
         init = function()
             local group = vim.api.nvim_create_augroup("autosave", {})
 

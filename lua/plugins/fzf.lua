@@ -206,13 +206,6 @@ return {
                 desc = "Marks",
                 mode = { "v", "n" },
             },
-            -- LEADER
-            {
-                "<leader>:",
-                "<cmd>FzfLua command_history<cr>",
-                desc = "Command History",
-                mode = { "v", "n" },
-            },
         },
         opts = {
             fzf_opts = {

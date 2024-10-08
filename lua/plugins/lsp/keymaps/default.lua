@@ -26,13 +26,13 @@ return function(bufnr)
         { "<leader>rn", vim.lsp.buf.rename, buffer = bufnr, desc = "Rename" },
         { "<leader>t", buffer = bufnr, group = "Toggle" },
         {
-            "<leader>tD",
+            "<leader>qD",
             vim.diagnostic.enable(not vim.diagnostic.is_enabled({ bufnr = nil })),
             buffer = bufnr,
             desc = "Toggle diagnostics buffers",
         },
         {
-            "<leader>td",
+            "<leader>qf",
             vim.diagnostic.enable(not vim.diagnostic.is_enabled({ bufnr = 0 })),
             buffer = bufnr,
             desc = "Toggle diagnostics for current buffer",

@@ -41,18 +41,6 @@ return {
                     { "<leader>h", buffer = bufnr, group = "Git hunk" },
                     { "<leader>t", buffer = bufnr, group = "Toggle" },
                     {
-                        "<leader>tD",
-                        gitsigns.toggle_deleted,
-                        buffer = bufnr,
-                        desc = "Toggle git show deleted",
-                    },
-                    {
-                        "<leader>tb",
-                        gitsigns.toggle_current_line_blame,
-                        buffer = bufnr,
-                        desc = "Toggle git show blame line",
-                    },
-                    {
                         "<leader>hr",
                         function()
                             gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })

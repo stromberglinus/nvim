@@ -18,7 +18,7 @@ return {
                 { "<leader>D", group = "Debug" },
                 { "<leader>q", group = "Messages" },
                 { "<leader>r", group = "Refactor" },
-                { "<leader>t", group = "Toggle" },
+                { "<leader>o", group = "Options" },
                 { "<leader>x", group = "Trouble" },
             },
         },
