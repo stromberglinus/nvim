@@ -3,7 +3,7 @@ return {
         "nvimtools/hydra.nvim",
         keys = {
             {
-                "<leader>o",
+                "<leader>t",
                 function()
                     -- Create Hydra inside the keybinding for <leader>o
                     local Hydra = require("hydra")
@@ -135,36 +135,32 @@ return {
                                     if choice == "add" then
                                         for prompt_name, options in pairs(prompt_choice) do
                                             local config_name = ""
-                                            vim.ui.input(
-                                                {
-                                                    default = tostring(prompt_name),
-                                                    prompt = "New config name",
-                                                },
-                                                function(input)
-                                                    if input ~= nil then
-                                                        config_name = input
-                                                        OPTIONS[name].value[input] = {}
-                                                        on_set(name)
-                                                    end
-                                                end
+                                            vim.ui.input({
+                                                default = tostring(prompt_name),
+                                                prompt = "New config name",
+                                            }, function(
+                                                input
                                             )
+                                                if input ~= nil then
+                                                    config_name = input
+                                                    OPTIONS[name].value[input] = {}
+                                                    on_set(name)
+                                                end
+                                            end)
 
                                             for _, option in pairs(options) do
-                                                vim.ui.input(
-                                                    {
-                                                        default = tostring(
-                                                            OPTIONS[name].value[option]
-                                                        ),
-                                                        prompt = option,
-                                                    },
-                                                    function(input)
-                                                        if input ~= nil then
-                                                            OPTIONS[name].value[config_name][option] =
-                                                                input
-                                                            on_set(name)
-                                                        end
-                                                    end
+                                                vim.ui.input({
+                                                    default = tostring(OPTIONS[name].value[option]),
+                                                    prompt = option,
+                                                }, function(
+                                                    input
                                                 )
+                                                    if input ~= nil then
+                                                        OPTIONS[name].value[config_name][option] =
+                                                            input
+                                                        on_set(name)
+                                                    end
+                                                end)
                                             end
                                         end
                                     elseif choice == "remove" then

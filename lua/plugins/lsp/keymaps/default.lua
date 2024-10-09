@@ -24,7 +24,6 @@ return function(bufnr)
         },
         { "<leader>r", buffer = bufnr, group = "Refactor" },
         { "<leader>rn", vim.lsp.buf.rename, buffer = bufnr, desc = "Rename" },
-        { "<leader>t", buffer = bufnr, group = "Toggle" },
         {
             "<leader>qD",
             vim.diagnostic.enable(not vim.diagnostic.is_enabled({ bufnr = nil })),

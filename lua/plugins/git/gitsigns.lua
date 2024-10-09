@@ -39,7 +39,6 @@ return {
                         desc = "Undo stage hunk",
                     },
                     { "<leader>h", buffer = bufnr, group = "Git hunk" },
-                    { "<leader>t", buffer = bufnr, group = "Toggle" },
                     {
                         "<leader>hr",
                         function()
