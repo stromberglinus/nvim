@@ -32,7 +32,7 @@ return {
         mode = { "n" },
     },
     {
-        "<leader>b",
+        "<leader>Db",
         function()
             require("dap").toggle_breakpoint()
         end,
@@ -40,7 +40,7 @@ return {
         mode = { "n" },
     },
     {
-        "<leader>Db",
+        "<leader>DB",
         function()
             require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point Message: "))
         end,
