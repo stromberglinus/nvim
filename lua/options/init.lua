@@ -1,4 +1,10 @@
 return {
+    local_vault_path = {
+        key = "--",
+        value = false,
+        description = "local vault paths loaded",
+        prompt = nil,
+    },
     lsp_lines = {
         value = true,
         key = "ll",

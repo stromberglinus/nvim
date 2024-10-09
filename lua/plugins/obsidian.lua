@@ -1,5 +1,5 @@
 -- Try to load the vault_paths.lua file
-local ok, vault_paths = pcall(require, "vault_paths")
+local ok, vault_paths = pcall(require, "localPaths/vault_paths")
 
 -- If loading failed, set default paths
 if not ok then
@@ -7,6 +7,9 @@ if not ok then
         personal = "~/workspace/ObsidianVaults/personal",
         work = "~/workspace/ObsidianVaults/work",
     }
+    OPTIONS.local_vault_path.value = false
+else
+    OPTIONS.local_vault_path.value = true
 end
 
 return {
