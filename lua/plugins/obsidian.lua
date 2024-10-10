@@ -12,28 +12,11 @@ else
     OPTIONS.local_vault_path.value = true
 end
 
--- Create commands to create new notes in personal and work vaults
-vim.api.nvim_create_user_command("ObsidianNewPersonal", function()
-    require("obsidian").setup({ dir = vault_paths.personal }) -- Switch to personal vault
-    vim.cmd("ObsidianNew")
-end, { desc = "Create a new note in the personal vault" })
-
-vim.api.nvim_create_user_command("ObsidianNewWork", function()
-    require("obsidian").setup({ dir = vault_paths.work }) -- Switch to work vault
-    vim.cmd("ObsidianNew")
-end, { desc = "Create a new note in the work vault" })
-
--- Keybindings to create notes in personal or work vaults
+vim.api.nvim_set_keymap("n", "<leader>on", ":ObsidianNew<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap(
     "n",
-    "<leader>op",
-    ":ObsidianNewPersonal<CR>",
-    { noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-    "n",
-    "<leader>ow",
-    ":ObsidianNewWork<CR>",
+    "<leader>ot",
+    ":ObsidianNewFromTemplate<CR>",
     { noremap = true, silent = true }
 )
 vim.api.nvim_set_keymap("n", "<leader>oO", ":ObsidianOpen<CR>", { noremap = true, silent = true })
@@ -45,12 +28,29 @@ vim.api.nvim_set_keymap(
     { noremap = true, silent = true }
 )
 
+vim.api.nvim_set_keymap(
+    "n",
+    "<leader>oS",
+    ":lua require('obsidian').setup({ dir = vim.fn.input('Select vault (personal/work): ', 'personal') == 'work' and '"
+        .. vault_paths.work
+        .. "' or '"
+        .. vault_paths.personal
+        .. "' })<CR>",
+    { noremap = true, silent = true, desc = "Select vault path" }
+)
+
 return {
     "epwalsh/obsidian.nvim",
     version = "*", -- Use the latest stable release
     lazy = true,
     ft = "markdown",
-    cmd = { "ObsidianOpen", "ObsidianNew", "ObsidianSearch", "ObsidianBacklinks" }, -- Load on these commands
+    cmd = {
+        "ObsidianOpen",
+        "ObsidianNew",
+        "ObsidianSearch",
+        "ObsidianBacklinks",
+        "ObsidianNewFromTemplate",
+    }, -- Load on these commands
     dependencies = {
         -- Required dependency
         "nvim-lua/plenary.nvim",
@@ -63,13 +63,25 @@ return {
     opts = {
         workspaces = {
             {
-                name = "personal",
-                path = vault_paths.personal, -- Set personal vault path
-            },
-            {
                 name = "work",
                 path = vault_paths.work, -- Set work vault path
             },
+            {
+                name = "personal",
+                path = vault_paths.personal, -- Set personal vault path
+            },
+        },
+        templates = {
+            folder = "Extras/Templates",
+            date_format = "%Y-%m-%d",
+            time_format = "%H:%M",
+            -- A map for custom variables, the key should be the variable and the value a function
+            substitutions = {},
         },
     },
+    config = function(_, opts)
+        -- Set work vault as the default on startup
+        opts.dir = vault_paths.work -- Set the default starting vault to work
+        require("obsidian").setup(opts)
+    end,
 }
