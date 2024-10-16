@@ -3,13 +3,13 @@ local ok, vault_paths = pcall(require, "localPaths/vault_paths")
 
 -- If loading failed, set default paths
 if not ok then
-    vault_paths = {
-        personal = vim.fn.expand("~/workspace/ObsidianVaults/personal"),
-        work = vim.fn.expand("~/workspace/ObsidianVaults/work"),
-    }
+    OPTIONS.local_vault_path.personal = vim.fn.expand("~/workspace/ObsidianVaults/personal")
+    OPTIONS.local_vault_path.work = vim.fn.expand("~/workspace/ObsidianVaults/work")
     OPTIONS.local_vault_path.value = false
 else
     OPTIONS.local_vault_path.value = true
+    OPTIONS.local_vault_path.personal = vault_paths.personal
+    OPTIONS.local_vault_path.work = vault_paths.work
 end
 
 vim.api.nvim_set_keymap("n", "<leader>on", ":ObsidianNew<CR>", { noremap = true, silent = true })
@@ -32,9 +32,9 @@ vim.api.nvim_set_keymap(
     "n",
     "<leader>oS",
     ":lua require('obsidian').setup({ dir = vim.fn.input('Select vault (personal/work): ', 'personal') == 'work' and '"
-        .. vault_paths.work
+        .. OPTIONS.local_vault_path.work
         .. "' or '"
-        .. vault_paths.personal
+        .. OPTIONS.local_vault_path.personal
         .. "' })<CR>",
     { noremap = true, silent = true, desc = "Select vault path" }
 )
@@ -64,11 +64,11 @@ return {
         workspaces = {
             {
                 name = "work",
-                path = vault_paths.work, -- Set work vault path
+                path = OPTIONS.local_vault_path.work, -- Set work vault path
             },
             {
                 name = "personal",
-                path = vault_paths.personal, -- Set personal vault path
+                path = OPTIONS.local_vault_path.personal, -- Set personal vault path
             },
         },
         templates = {
@@ -78,10 +78,19 @@ return {
             -- A map for custom variables, the key should be the variable and the value a function
             substitutions = {},
         },
+        ---@param url string
+        follow_url_func = function(url)
+            -- Open the URL in the default web browser.
+            if _G.IS_WINDOWS then
+                vim.cmd(':silent exec "!start ' .. url .. '"') -- Windows
+            else
+                vim.fn.jobstart({ "xdg-open", url }) -- linux
+            end
+        end,
     },
     config = function(_, opts)
         -- Set work vault as the default on startup
-        opts.dir = vault_paths.work -- Set the default starting vault to work
+        opts.dir = OPTIONS.local_vault_path.work -- Set the default starting vault to work
         require("obsidian").setup(opts)
     end,
 }

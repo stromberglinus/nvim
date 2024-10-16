@@ -2,6 +2,8 @@ return {
     local_vault_path = {
         key = "--",
         value = false,
+        personal = "",
+        work = "",
         description = "local vault paths loaded",
         prompt = nil,
     },
