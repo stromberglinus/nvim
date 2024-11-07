@@ -31,15 +31,15 @@ return {
                 end, { desc = command })
             end
             -- Set keymaps for Adopure commands with descriptions
-            set_keymap("<leader>Alc", "load pull request", "Load Context")
-            set_keymap("<leader>Alt", "load threads", "Load Threads")
-            set_keymap("<leader>Aoq", "open quickfix", "Open Quickfix")
-            set_keymap("<leader>Aot", "open thread_picker", "Open Thread Picker")
-            set_keymap("<leader>Aon", "open new_thread", "Open New Thread")
-            set_keymap("<leader>Aoe", "open existing_thread", "Open Existing Thread")
-            set_keymap("<leader>Asc", "submit comment", "Submit Comment")
-            set_keymap("<leader>Asv", "submit vote", "Submit Vote")
-            set_keymap("<leader>Ast", "submit thread_status", "Submit Thread Status")
+            set_keymap("<leader>Alc", "AdoPure load context")
+            set_keymap("<leader>Alt", "AdoPure load threads")
+            set_keymap("<leader>Aoq", "AdoPure open quickfix")
+            set_keymap("<leader>Aot", "AdoPure open thread_picker")
+            set_keymap("<leader>Aon", "AdoPure open new_thread")
+            set_keymap("<leader>Aoe", "AdoPure open existing_thread")
+            set_keymap("<leader>Asc", "AdoPure submit comment")
+            set_keymap("<leader>Asv", "AdoPure submit vote")
+            set_keymap("<leader>Ast", "AdoPure submit thread_status")
         end,
     },
 }
