@@ -7,8 +7,6 @@ require("lazy").setup({
 
     require("plugins.git.diffview"),
 
-    require("plugins.git.neogit"),
-
     require("plugins.which-key"),
 
     require("plugins.fzf"),
@@ -64,6 +62,8 @@ require("lazy").setup({
     require("plugins.render-markdown"),
 
     require("plugins.adopure"),
+
+    require("plugins.snacks"),
 }, {
     ui = {
         -- If you are using a Nerd Font: set icons to an empty table which will use the

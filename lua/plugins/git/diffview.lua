@@ -10,14 +10,9 @@ return {
                 desc = "Diff to origin",
             },
             {
-                "<leader>gf",
+                "<leader>gF",
                 "<cmd>DiffviewFileHistory %<cr>",
                 desc = "View buffer history",
-            },
-            {
-                "<leader>gF",
-                "<cmd>DiffviewFileHistory<cr>",
-                desc = "View history",
             },
             {
                 "<leader>gd",
