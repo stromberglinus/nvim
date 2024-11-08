@@ -11,7 +11,10 @@ return {
                 registers = true,
             },
             spec = {
-                { "<leader>A", group = "Adopure" },
+                { "<leader>A", group = "Azure" },
+                { "<leader>Al", group = "Load" },
+                { "<leader>Ao", group = "Open" },
+                { "<leader>As", group = "Submit" },
                 { "<leader>c", group = "CMake" },
                 { "<leader>g", group = "Git" },
                 { "<leader>f", group = "Find" },
