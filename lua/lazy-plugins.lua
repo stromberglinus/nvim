@@ -55,7 +55,7 @@ require("lazy").setup({
 
     require("plugins.grug"),
 
-    require("plugins.dap.init"),
+    require("plugins.dap"),
 
     require("plugins.obsidian"),
 
@@ -64,6 +64,8 @@ require("lazy").setup({
     require("plugins.adopure"),
 
     require("plugins.snacks"),
+
+    require("plugins.cmake"),
 }, {
     ui = {
         -- If you are using a Nerd Font: set icons to an empty table which will use the
