@@ -1,12 +1,3 @@
---- `notify_noice.lua`: Configuration for enhancing Neovim's notification and messaging system.
--- This file sets up the following plugins:
--- 1. **`nvim-notify`**: A fancy notification manager for Neovim that replaces the default message UI.
---    - Features: Custom icons, compact rendering, and adjustable timeout for notifications.
--- 2. **`noice.nvim`**: Enhances the Neovim command-line, messages, and LSP UI.
---    - Features: Overrides LSP markdown rendering, customizes message routing,
---      and introduces a command palette and various views for hover, confirm, and popup windows.
---    - Keybindings: Includes several key mappings for interacting with Noice (e.g., `<leader>ql` for last message).
-
 local icons = require("utils.icons").diagnostics
 return {
     {
