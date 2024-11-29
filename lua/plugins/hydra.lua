@@ -281,6 +281,131 @@ return {
                     option_hydra:activate()
                 end,
             },
+            {
+                "<leader><leader>", -- Keybinding for Emoji Picker
+                function()
+                    -- Emoji Picker Implementation
+                    local Hydra = require("hydra")
+
+                    -- Predefined list of emojis
+
+                    local EMOJIS = {
+                        { key = "s", emoji = "😄", description = "Smile" },
+                        { key = "r", emoji = "🚀", description = "Rocket" },
+                        { key = "f", emoji = "🔥", description = "Fire" },
+                        { key = "|", emoji = "⚡", description = "Lightning" },
+                        { key = "$", emoji = "📦", description = "Package" },
+                        { key = "v", emoji = "💻", description = "Computer" },
+                        { key = "x", emoji = "❌", description = "Cross" },
+                        { key = "y", emoji = "✅", description = "Checkmark" },
+                        { key = "h", emoji = "❤️", description = "Heart" },
+                        { key = "a", emoji = "✨", description = "Sparkle" },
+                        { key = "m", emoji = "📝", description = "Memo" },
+                        { key = "g", emoji = "⚙️", description = "Gear" },
+                        { key = "#", emoji = "🕒", description = "Clock" },
+                        { key = "q", emoji = "❗", description = "Exclamation" },
+                        { key = "w", emoji = "❓", description = "Question" },
+                        { key = "~", emoji = "🟢", description = "Green Circle" },
+                        { key = "@", emoji = "🟡", description = "Yellow Circle" },
+                        { key = "=", emoji = "🔴", description = "Red Circle" },
+                        { key = "b", emoji = "🌟", description = "Star" },
+                        { key = "u", emoji = "📖", description = "Book" },
+                        { key = "i", emoji = "🎵", description = "Music" },
+                        { key = "o", emoji = "💬", description = "Speech" },
+                        { key = ";", emoji = "⏳", description = "Hourglass" },
+                        { key = "/", emoji = "📊", description = "Diagram" },
+                        { key = ",", emoji = "🔧", description = "Wrench" },
+                        { key = ".", emoji = "🔑", description = "Key" },
+                        { key = "z", emoji = "📌", description = "Pushpin" },
+                        { key = "d", emoji = "📅", description = "Calendar" },
+                        { key = "*", emoji = "📁", description = "File Folder" },
+                        { key = "&", emoji = "🎨", description = "Art" },
+                        { key = "%", emoji = "🖋️", description = "Pen" },
+                        { key = "+", emoji = "🚶", description = "Walking" },
+                        { key = "-", emoji = "🏃", description = "Running" },
+                        { key = ">", emoji = "➡️", description = "Arrow Right" },
+                        { key = "<", emoji = "⬅️", description = "Arrow Left" },
+                    }
+
+                    -- Helper function to calculate spacing
+                    local max_length = 0
+                    for _, config in pairs(EMOJIS) do
+                        local length = config.description:len()
+                        max_length = length > max_length and length or max_length
+                    end
+
+                    local get_offset = function(name)
+                        return max_length - name:len() + 3
+                    end
+
+                    local hint_builder = function(key, emoji, description)
+                        local spacing = string.rep(" ", get_offset(description))
+                        local key_spacing = string.rep(" ", 3 - key:len())
+                        return "  _"
+                            .. key
+                            .. "_"
+                            .. key_spacing
+                            .. "│"
+                            .. " "
+                            .. emoji
+                            .. " "
+                            .. description
+                            .. spacing
+                            .. " "
+                    end
+
+                    -- Build heads (keybindings) and hints
+                    local heads = {}
+                    local hint = [[
+ ^ Emoji Picker
+ ]]
+                    for _, config in ipairs(EMOJIS) do
+                        local key = config.key
+                        local emoji = config.emoji
+                        local description = config.description
+
+                        -- Add hint
+                        hint = hint .. "\n" .. hint_builder(key, emoji, description)
+
+                        -- Add head
+                        table.insert(heads, {
+                            key,
+                            function()
+                                vim.api.nvim_put({ emoji }, "", true, true) -- Insert emoji at cursor
+                            end,
+                            { exit = true, desc = description },
+                        })
+                    end
+
+                    -- Add exit option
+                    table.insert(heads, { "<Esc>", nil, { exit = true, desc = "Close Picker" } })
+
+                    hint = hint .. "\n" .. [[
+ ^ _<Esc>_ Close Picker
+ ]]
+
+                    -- Create and immediately open the Hydra
+                    local emoji_hydra = Hydra({
+                        name = "Emoji Picker",
+                        hint = hint,
+                        config = {
+                            color = "amaranth",
+                            invoke_on_body = true,
+                            hint = {
+                                float_opts = {
+                                    border = "rounded",
+                                },
+                                position = "middle",
+                            },
+                        },
+                        mode = "n", -- Normal mode only
+                        body = nil, -- No keybinding for body, triggered manually
+                        heads = heads,
+                    })
+
+                    emoji_hydra:activate()
+                end,
+            },
         },
     },
 }
