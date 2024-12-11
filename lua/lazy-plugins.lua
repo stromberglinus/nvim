@@ -45,6 +45,8 @@ require("lazy").setup({
 
     require("plugins.alpha"),
 
+    require("plugins.persistence"),
+
     require("plugins.indent_blankline"),
 
     require("plugins.zen_mode"),

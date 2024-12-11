@@ -1,7 +1,7 @@
 return {
     {
         "goolord/alpha-nvim",
-        dependencies = { "nvim-telescope/telescope.nvim" },
+        dependencies = { "folke/persistence.nvim" },
         config = function()
             local alpha = require("alpha")
             local dashboard = require("alpha.themes.dashboard")
@@ -99,10 +99,9 @@ return {
                 dashboard.button("r", "  > Recent", ":Telescope oldfiles<CR>"),
                 dashboard.button(
                     "p",
-                    "  > Project",
-                    ":lua require'telescope'.extensions.project.project{display_type = 'full'}<cr>"
+                    "  > Select Session",
+                    ":lua require('persistence').select()<CR>"
                 ),
-
                 dashboard.button("c", "  > Configuration", ":e $MYVIMRC <CR>"),
                 dashboard.button("q", "  > Quit NVIM", ":qa<CR>"),
             }
