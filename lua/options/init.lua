@@ -74,4 +74,32 @@ return {
             require("gitsigns").toggle_current_line_blame(OPTIONS.git_blame_line.value)
         end,
     },
+    limit_lspLog = {
+        value = true,
+        key = "ld",
+        description = "Limits the lsp log",
+        prompt = nil,
+        callback = function()
+            if OPTIONS.limit_lspLog.value then
+                local log_file = vim.fn.stdpath("state") .. "/lsp.log"
+
+                -- Read the file and count lines
+                local f = io.open(log_file, "r")
+                if f then
+                    local count = 0
+                    for _ in f:lines() do
+                        count = count + 1
+                    end
+                    f:close()
+
+                    if count > 20 then -- If more than 20 lines, clear the file
+                        local f_clear = io.open(log_file, "w")
+                        if f_clear then
+                            f_clear:close()
+                        end
+                    end
+                end
+            end
+        end,
+    },
 }
