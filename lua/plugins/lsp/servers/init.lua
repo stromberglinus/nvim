@@ -4,5 +4,5 @@ return {
     clangd = require("plugins.lsp.servers.clangd"),
     -- cssls = require("plugins.lsp.servers.cssls"),
     lua_ls = require("plugins.lsp.servers.lua_ls"),
-    -- tsserver = require("plugins.lsp.servers.tsserver"),
+    tsserver = require("plugins.lsp.servers.tsserver"),
 }
