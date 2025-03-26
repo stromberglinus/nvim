@@ -63,8 +63,6 @@ require("lazy").setup({
 
     require("plugins.render-markdown"),
 
-    require("plugins.adopure"),
-
     require("plugins.snacks"),
 
     require("plugins.cmake"),
