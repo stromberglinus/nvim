@@ -2,7 +2,6 @@
 -- Configuration for Neovim's autocompletion framework using `nvim-cmp`.
 -- The configuration is designed to enhance coding efficiency with intelligent
 -- autocompletion, symbol annotations, and custom snippet support.
-
 return {
     {
         "hrsh7th/nvim-cmp",
@@ -16,17 +15,26 @@ return {
             "hrsh7th/cmp-path",
             "petertriho/cmp-git",
             "hrsh7th/cmp-cmdline",
-            "onsails/lspkind-nvim", -- For icons in completion menu
-            "L3MON4D3/LuaSnip", -- Snippet engine
-            "saadparwaiz1/cmp_luasnip", -- Snippet source for nvim-cmp
+            "rafamadriz/friendly-snippets",
+            "onsails/lspkind-nvim",
+            "saadparwaiz1/cmp_luasnip",
+            {
+                "L3MON4D3/LuaSnip",
+                dependencies = { "rafamadriz/friendly-snippets" },
+            },
         },
         config = function(_, _)
             local cmp = require("cmp")
             local lspkind = require("lspkind")
             local luasnip = require("luasnip")
-
-            luasnip.config.setup({}) -- Setup LuaSnip
-
+            luasnip.config.setup({})
+            require("luasnip.loaders.from_lua").lazy_load()
+            local from_vscode = require("luasnip.loaders.from_vscode")
+            local snippets_path = vim.fn.expand("./.vscode/copyright.code-snippets")
+            from_vscode.load_standalone({
+                path = snippets_path,
+                lazy = false,
+            })
             cmp.setup({
                 -- Default settings and key mappings
                 snippet = {
