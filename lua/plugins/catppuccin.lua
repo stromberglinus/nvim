@@ -103,6 +103,13 @@ return {
             },
             custom_highlights = function(c)
                 return {
+                    Normal = { bg = c.mantle }, -- darkest in catppuccin
+                    NormalNC = { bg = c.mantle },
+                    FloatBorder = { bg = c.mantle },
+                    NormalFloat = { bg = c.mantle },
+                    TelescopeNormal = { bg = c.mantle },
+                    Pmenu = { bg = c.mantle },
+
                     HighlightUndo = { bg = c.overlay0 },
                     CopilotSuggestion = { fg = c.surface1 },
                     InclineText = { fg = c.mauve, bg = c.surface0, style = { "bold" } },
@@ -121,4 +128,3 @@ return {
         end,
     },
 }
-
