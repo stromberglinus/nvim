@@ -38,10 +38,6 @@ require("lazy").setup({
 
     require("plugins.lualine"),
 
-    require("plugins.alpha"),
-
-    require("plugins.persistence"),
-
     require("plugins.zen_mode"),
 
     require("plugins.hydra"),

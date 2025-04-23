@@ -1,5 +1,70 @@
 ---@diagnostic disable: undefined-global
 
+local function week_ascii_text()
+    -- stylua ignore start
+    return {
+        ["Monday"] = [[
+███╗   ███╗ ██████╗ ███╗   ██╗██████╗  █████╗ ██╗   ██╗
+████╗ ████║██╔═══██╗████╗  ██║██╔══██╗██╔══██╗╚██╗ ██╔╝
+██╔████╔██║██║   ██║██╔██╗ ██║██║  ██║███████║ ╚████╔╝ 
+██║╚██╔╝██║██║   ██║██║╚██╗██║██║  ██║██╔══██║  ╚██╔╝  
+██║ ╚═╝ ██║╚██████╔╝██║ ╚████║██████╔╝██║  ██║   ██║   
+╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚═════╝ ╚═╝  ╚═╝   ╚═╝   ]],
+        ["Tuesday"] = [[
+████████╗██╗   ██╗███████╗███████╗██████╗  █████╗ ██╗   ██╗
+╚══██╔══╝██║   ██║██╔════╝██╔════╝██╔══██╗██╔══██╗╚██╗ ██╔╝
+   ██║   ██║   ██║█████╗  ███████╗██║  ██║███████║ ╚████╔╝ 
+   ██║   ██║   ██║██╔══╝  ╚════██║██║  ██║██╔══██║  ╚██╔╝  
+   ██║   ╚██████╔╝███████╗███████║██████╔╝██║  ██║   ██║   
+   ╚═╝    ╚═════╝ ╚══════╝╚══════╝╚═════╝ ╚═╝  ╚═╝   ╚═╝   ]],
+        ["Wednesday"] = [[
+██╗    ██╗███████╗██████╗ ███╗   ██╗███████╗███████╗██████╗  █████╗ ██╗   ██╗
+██║    ██║██╔════╝██╔══██╗████╗  ██║██╔════╝██╔════╝██╔══██╗██╔══██╗╚██╗ ██╔╝
+██║ █╗ ██║█████╗  ██║  ██║██╔██╗ ██║█████╗  ███████╗██║  ██║███████║ ╚████╔╝ 
+██║███╗██║██╔══╝  ██║  ██║██║╚██╗██║██╔══╝  ╚════██║██║  ██║██╔══██║  ╚██╔╝  
+╚███╔███╔╝███████╗██████╔╝██║ ╚████║███████╗███████║██████╔╝██║  ██║   ██║   
+ ╚══╝╚══╝ ╚══════╝╚═════╝ ╚═╝  ╚═══╝╚══════╝╚══════╝╚═════╝ ╚═╝  ╚═╝   ╚═╝   ]],
+        ["Thursday"] = [[
+████████╗██╗  ██╗██╗   ██╗██████╗ ███████╗██████╗  █████╗ ██╗   ██╗
+╚══██╔══╝██║  ██║██║   ██║██╔══██╗██╔════╝██╔══██╗██╔══██╗╚██╗ ██╔╝
+   ██║   ███████║██║   ██║██████╔╝███████╗██║  ██║███████║ ╚████╔╝ 
+   ██║   ██╔══██║██║   ██║██╔══██╗╚════██║██║  ██║██╔══██║  ╚██╔╝  
+   ██║   ██║  ██║╚██████╔╝██║  ██║███████║██████╔╝██║  ██║   ██║   
+   ╚═╝   ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═════╝ ╚═╝  ╚═╝   ╚═╝   ]],
+        ["Friday"] = [[
+███████╗██████╗ ██╗██████╗  █████╗ ██╗   ██╗
+██╔════╝██╔══██╗██║██╔══██╗██╔══██╗╚██╗ ██╔╝
+█████╗  ██████╔╝██║██║  ██║███████║ ╚████╔╝ 
+██╔══╝  ██╔══██╗██║██║  ██║██╔══██║  ╚██╔╝  
+██║     ██║  ██║██║██████╔╝██║  ██║   ██║   
+╚═╝     ╚═╝  ╚═╝╚═╝╚═════╝ ╚═╝  ╚═╝   ╚═╝   ]],
+        ["Saturday"] = [[
+███████╗ █████╗ ████████╗██╗   ██╗██████╗ ██████╗  █████╗ ██╗   ██╗
+██╔════╝██╔══██╗╚══██╔══╝██║   ██║██╔══██╗██╔══██╗██╔══██╗╚██╗ ██╔╝
+███████╗███████║   ██║   ██║   ██║██████╔╝██║  ██║███████║ ╚████╔╝ 
+╚════██║██╔══██║   ██║   ██║   ██║██╔══██╗██║  ██║██╔══██║  ╚██╔╝  
+███████║██║  ██║   ██║   ╚██████╔╝██║  ██║██████╔╝██║  ██║   ██║   
+╚══════╝╚═╝  ╚═╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝   ╚═╝   ]],
+        ["Sunday"] = [[
+███████╗██╗   ██╗███╗   ██╗██████╗  █████╗ ██╗   ██╗
+██╔════╝██║   ██║████╗  ██║██╔══██╗██╔══██╗╚██╗ ██╔╝
+███████╗██║   ██║██╔██╗ ██║██║  ██║███████║ ╚████╔╝ 
+╚════██║██║   ██║██║╚██╗██║██║  ██║██╔══██║  ╚██╔╝  
+███████║╚██████╔╝██║ ╚████║██████╔╝██║  ██║   ██║   
+╚══════╝ ╚═════╝ ╚═╝  ╚═══╝╚═════╝ ╚═╝  ╚═╝   ╚═╝   ]],
+    }
+
+    -- stylua ignore end
+end
+
+local function week_header()
+    local week = week_ascii_text()
+    local daysoftheweek =
+        { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" }
+    local day = daysoftheweek[os.date("*t").wday]
+    return week[day]
+end
+
 return {
     "folke/snacks.nvim",
     priority = 1000,
@@ -7,7 +72,6 @@ return {
     ---@type snacks.Config
     opts = {
         bigfile = { enabled = true },
-        dashboard = { enabled = true },
         indent = { enabled = true },
         input = { enabled = true },
         quickfile = { enabled = true },
@@ -71,6 +135,121 @@ return {
                         end)
                     end
                 end,
+            },
+        },
+        dashboard = {
+            enabled = true,
+            preset = {
+                keys = {
+                    {
+                        icon = " ",
+                        key = "f",
+                        desc = "Find File",
+                        action = "<leader>ff",
+                    },
+                    {
+                        icon = " ",
+                        key = "n",
+                        desc = "New File",
+                        action = ":ene | startinsert",
+                    },
+                    {
+                        icon = " ",
+                        key = "s",
+                        desc = "Find Text",
+                        action = "<leader>sg",
+                    },
+                    {
+                        icon = " ",
+                        key = "p",
+                        desc = "Pick Project",
+                        action = "<leader>fp",
+                    },
+                    {
+                        icon = " ",
+                        key = "r",
+                        desc = "Recent Files",
+                        action = "<leader>fr",
+                    },
+                    {
+                        icon = " ",
+                        key = "g",
+                        desc = "Lazygit",
+                        action = "<leader>gg",
+                    },
+                    {
+                        icon = " ",
+                        key = "G",
+                        desc = "Lazygit config",
+                        action = "<leader>gG",
+                    },
+                    {
+                        icon = " ",
+                        key = "c",
+                        desc = "Config",
+                        action = "<leader>fc",
+                    },
+                    {
+                        icon = " ",
+                        key = "l",
+                        desc = "Restore Last Session",
+                        section = "session",
+                    },
+                    {
+                        icon = "󰒲 ",
+                        key = "L",
+                        desc = "Lazy",
+                        action = ":Lazy",
+                        enabled = package.loaded.lazy,
+                    },
+                    { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+                },
+            },
+            sections = {
+                { section = "header" },
+                { section = "keys", gap = 1, padding = 2 },
+                { section = "startup", padding = 1 },
+                {
+                    pane = 2,
+                    align = "center",
+                    title = week_header(),
+                    padding = 2,
+                },
+                {
+                    pane = 2,
+                    icon = " ",
+                    title = "Projects",
+                    section = "projects",
+                    indent = 2,
+                    padding = 1,
+                },
+                {
+                    pane = 2,
+                    icon = " ",
+                    title = "Git Status",
+                    section = "terminal",
+                    enabled = function()
+                        local ok, _ = vim.uv.fs_stat(vim.loop.cwd() .. "/.git")
+                        return ok ~= nil
+                    end,
+                    cmd = "git status --short --branch --renames",
+                    height = 5,
+                    padding = 1,
+                    ttl = 5 * 60,
+                    indent = 3,
+                },
+                {
+                    pane = 2,
+                    align = "center",
+                    text = {
+                        { " ", hl = "special" },
+                        { "" .. os.date("%Y-%m-%d"), hl = "footer" },
+                        { "   󰕶 ", hl = "special" },
+                        { "" .. os.date("%W"), hl = "footer" },
+                        { "   󰥔 ", hl = "special" },
+                        { "" .. os.date("%H:%M:%S"), hl = "footer" },
+                    },
+                },
             },
         },
     },
