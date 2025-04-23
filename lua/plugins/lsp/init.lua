@@ -71,30 +71,7 @@ return {
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
             "onsails/lspkind.nvim",
-            -- "kevinhwang91/nvim-ufo",  used for folding code...
             "hrsh7th/cmp-nvim-lsp",
-            -- "AckslD/swenv.nvim", used for venv
-            {
-                "artemave/workspace-diagnostics.nvim",
-                keys = {
-                    {
-                        "<leader>qj",
-                        function()
-                            local clients = vim.lsp.get_clients()
-                            for _, client in ipairs(clients) do
-                                if client.name ~= "typos_lsp" then
-                                    require("workspace-diagnostics").populate_workspace_diagnostics(
-                                        client,
-                                        0
-                                    )
-                                end
-                            end
-                        end,
-                        desc = "Workspace diagnostics",
-                    },
-                },
-            },
-
             {
                 "p00f/clangd_extensions.nvim",
                 dependencies = {

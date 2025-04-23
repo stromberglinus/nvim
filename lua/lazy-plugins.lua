@@ -9,16 +9,13 @@ require("lazy").setup({
 
     require("plugins.which-key"),
 
-    require("plugins.fzf"),
-
     require("plugins.telescope.telescope"),
 
     require("plugins.session"),
 
     require("plugins.incline"),
 
-    require("plugins.noice.noice"),
-
+    require("plugins.noice"),
     require("plugins.lsp.init"),
 
     require("plugins.lsp_lines"),
@@ -39,15 +36,11 @@ require("lazy").setup({
 
     require("plugins.smartsplit"),
 
-    require("plugins.trouble"),
-
     require("plugins.lualine"),
 
     require("plugins.alpha"),
 
     require("plugins.persistence"),
-
-    require("plugins.indent_blankline"),
 
     require("plugins.zen_mode"),
 
