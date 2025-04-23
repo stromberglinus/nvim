@@ -26,7 +26,7 @@ return {
                 enable = true,
                 disable = { "yaml" }, -- Disables automatic indentation for YAML files
             },
-            ensured_install = {
+            ensure_install = {
                 "bash",
                 "c",
                 "cpp",
