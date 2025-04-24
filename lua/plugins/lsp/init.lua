@@ -207,7 +207,7 @@ return {
                     require("plugins.lsp.keymaps").default(bufnr)
                     if client.server_capabilities.inlayHintProvider then
                         require("plugins.lsp.keymaps").inlay_hints(bufnr)
-                        vim.lsp.inlay_hint.enable(true)
+                        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
                     end
 
                     if client.name == "clangd" then
