@@ -30,7 +30,7 @@ return {
             luasnip.config.setup({})
             require("luasnip.loaders.from_lua").lazy_load()
             local from_vscode = require("luasnip.loaders.from_vscode")
-            local snippets_path = vim.fn.expand("./.vscode/copyright.code-snippets")
+            local snippets_path = vim.fn.getcwd() .. "/.vscode/copyright.code-snippets"
             from_vscode.load_standalone({
                 path = snippets_path,
                 lazy = false,
