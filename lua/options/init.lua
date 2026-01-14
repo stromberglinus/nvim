@@ -29,21 +29,21 @@ return {
         end,
     },
     format_on_save = {
-        value = true, -- Default to true (enabled)
+        value = true, -- default to true (enabled)
         key = "fs",
-        description = "Toggle format on save",
+        description = "toggle format on save",
         prompt = nil,
         callback = function()
-            if OPTIONS.format_on_save.value then
-                vim.api.nvim_create_autocmd("BufWritePre", {
-                    group = vim.api.nvim_create_augroup("FormatOnSave", { clear = true }),
+            if options.format_on_save.value then
+                vim.api.nvim_create_autocmd("bufwritepre", {
+                    group = vim.api.nvim_create_augroup("formatonsave", { clear = true }),
                     pattern = "*",
                     callback = function()
                         require("conform").format({ async = true, lsp_fallback = true })
                     end,
                 })
             else
-                vim.api.nvim_clear_autocmds({ group = "FormatOnSave" })
+                vim.api.nvim_clear_autocmds({ group = "formatonsave" })
             end
         end,
     },
