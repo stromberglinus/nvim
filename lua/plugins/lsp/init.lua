@@ -21,7 +21,6 @@ return {
                 "cmake-language-server",
                 "lua-language-server",
                 "marksman",
-
                 -- NOTE: LINT
                 "buf",
                 "buildifier",
@@ -33,7 +32,6 @@ return {
                 "markdownlint",
                 "shellcheck",
                 "stylelint",
-
                 -- NOTE: FORMAT
                 "autoflake",
                 "clang-format",
@@ -128,15 +126,17 @@ return {
                 end
             end
 
-            local lspconfig = require("lspconfig")
-
-            for type, icon in pairs(require("utils.icons").diagnostics) do
-                local hl = "DiagnosticSign" .. type
-                vim.fn.sign_define(hl, {
-                    text = icon,
-                    texthl = hl, --[[numhl = hl]]
-                })
-            end
+            local icons = require("utils.icons").diagnostics
+            vim.diagnostic.config({
+                signs = {
+                    text = {
+                        [vim.diagnostic.severity.ERROR] = icons.Error,
+                        [vim.diagnostic.severity.WARN] = icons.Warn,
+                        [vim.diagnostic.severity.INFO] = icons.Info,
+                        [vim.diagnostic.severity.HINT] = icons.Hint,
+                    },
+                },
+            })
 
             vim.diagnostic.config(opts.diagnostics)
 
@@ -145,7 +145,6 @@ return {
                 vim.lsp.protocol.make_client_capabilities()
             )
 
-            -- Specify otherwise clangd seems to use utf-8.
             capabilities.offsetEncoding = { "utf-16" }
             capabilities.semanticTokensProvider = nil
             capabilities.textDocument.foldingRange = {
@@ -153,67 +152,33 @@ return {
                 lineFoldingOnly = true,
             }
 
-            local function setup(server)
-                local server_opts = vim.tbl_deep_extend("force", {
-                    capabilities = vim.deepcopy(capabilities),
-                }, servers[server] or {})
-
-                if opts.setup[server] then
-                    if opts.setup[server](server, server_opts) then
-                        return
-                    end
-                elseif opts.setup["*"] then
-                    if opts.setup["*"](server, server_opts) then
-                        return
-                    end
-                end
-                lspconfig[server].setup(server_opts)
-            end
-
-            local mlsp = require("mason-lspconfig")
-            local available = mlsp.get_available_servers()
-
-            local ensure_installed = {}
+            -- Migrate to new API: vim.lsp.config and vim.lsp.enable
             for server, server_opts in pairs(servers) do
                 if server_opts then
                     server_opts = server_opts == true and {} or server_opts
-                    -- run manual setup if mason=false or if this is a server that cannot be installed with mason-lspconfig
-                    if server_opts.mason == false or not vim.tbl_contains(available, server) then
-                        setup(server)
-                    else
-                        ensure_installed[#ensure_installed + 1] = server
-                    end
+                    server_opts.capabilities = vim.deepcopy(capabilities)
+                    vim.lsp.config(server, server_opts)
+                    vim.lsp.enable(server)
                 end
             end
 
-            require("mason-lspconfig").setup({ ensure_installed = ensure_installed })
-            require("mason-lspconfig").setup_handlers({ setup })
-
-            -- LspAttach
             vim.api.nvim_create_autocmd("LspAttach", {
                 group = vim.api.nvim_create_augroup("UserLspConfig", {}),
                 callback = function(args)
                     local bufnr = args.buf
                     local client = vim.lsp.get_client_by_id(args.data.client_id)
-
                     if client == nil then
                         return
                     end
-
-                    -- Enable completion triggered by <c-x><c-o>
                     vim.bo[args.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
-
-                    -- Mappings
                     require("plugins.lsp.keymaps").default(bufnr)
                     if client.server_capabilities.inlayHintProvider then
                         require("plugins.lsp.keymaps").inlay_hints(bufnr)
                         vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
                     end
-
                     if client.name == "clangd" then
                         require("plugins.lsp.keymaps").clangd(bufnr)
                     end
-                    -- Normal Mode
                 end,
             })
         end,
