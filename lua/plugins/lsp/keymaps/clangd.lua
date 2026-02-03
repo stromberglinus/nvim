@@ -1,16 +1,16 @@
 return function(bufnr)
-    local wk = require("which-key")
-    wk.register({
-        o = {
+    require("which-key").add({
+        {
+            "<leader>o",
             "<cmd>ClangdSwitchSourceHeader<CR>",
-            "Switch Header/Source",
+            buffer = bufnr,
+            desc = "Switch Header/Source",
         },
-        O = {
+        {
+            "<leader>O",
             "<cmd>vsplit | ClangdSwitchSourceHeader<CR>",
-            "Switch Header/Source (vsplit)",
+            buffer = bufnr,
+            desc = "Switch Header/Source (vsplit)",
         },
-    }, {
-        prefix = "<leader>",
-        buffer = bufnr,
     })
 end
