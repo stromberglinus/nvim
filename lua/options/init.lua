@@ -56,24 +56,24 @@ return {
             vim.o.spell = OPTIONS.spell.value
         end,
     },
-    git_deleted = {
-        value = false,
-        key = "gd",
-        description = "Toggle git deleted highlights",
-        prompt = nil,
-        callback = function()
-            require("gitsigns").toggle_deleted(OPTIONS.git_deleted.value)
-        end,
-    },
-    git_blame_line = {
-        value = true,
-        key = "gb",
-        description = "Toggle git blame line",
-        prompt = nil,
-        callback = function()
-            require("gitsigns").toggle_current_line_blame(OPTIONS.git_blame_line.value)
-        end,
-    },
+    -- git_deleted = {
+    --     value = false,
+    --     key = "gd",
+    --     description = "Toggle git deleted highlights",
+    --     prompt = nil,
+    --     callback = function()
+    --         require("gitsigns").toggle_deleted(OPTIONS.git_deleted.value)
+    --     end,
+    -- },
+    -- git_blame_line = {
+    --     value = true,
+    --     key = "gb",
+    --     description = "Toggle git blame line",
+    --     prompt = nil,
+    --     callback = function()
+    --         require("gitsigns").toggle_current_line_blame(OPTIONS.git_blame_line.value)
+    --     end,
+    -- },
     limit_lspLog = {
         value = true,
         key = "ld",
