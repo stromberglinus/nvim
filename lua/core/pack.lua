@@ -1,3 +1,14 @@
+vim.pack.add({
+  {
+    src = "https://github.com/nvim-lua/plenary.nvim",
+    name = "plenary.nvim",
+    version = "master",
+  },
+}, {
+  load = true,
+  confirm = false,
+})
+
 local packages = {
     {
         src = "https://github.com/catppuccin/nvim",
@@ -43,6 +54,11 @@ local packages = {
       src = "https://github.com/akinsho/toggleterm.nvim",
       name = "toggleterm.nvim",
       version = "main",
+    },
+    {
+      src = "https://github.com/Civitasv/cmake-tools.nvim",
+      name = "cmake-tools.nvim",
+      version = "master",
     },
     {
       src = "https://github.com/MaxNiia/nvim-unception",
@@ -123,11 +139,6 @@ local packages = {
       src = "https://github.com/hrsh7th/cmp-path",
       name = "cmp-path",
       version = "main",
-    },
-    {
-      src = "https://github.com/nvim-lua/plenary.nvim",
-      name = "plenary.nvim",
-      version = "master",
     },
     {
       src = "https://github.com/petertriho/cmp-git",
@@ -267,7 +278,7 @@ require("plugins.toggleterm")
 require("plugins.grug")
 require("plugins.conform")
 require("plugins.dap")
--- require("plugins.cmake"),
+require("plugins.cmake")
 
 require("plugins.obsidian")
 require("plugins.render-markdown")

@@ -30,6 +30,11 @@
       "src": "https://github.com/p00f/clangd_extensions.nvim",
       "version": "'main'"
     },
+    "cmake-tools.nvim": {
+      "rev": "f9a3eb2be0b8148df470244e5c25aede3a3a28a5",
+      "src": "https://github.com/Civitasv/cmake-tools.nvim",
+      "version": "'master'"
+    },
     "cmp-buffer": {
       "rev": "b74fab3656eea9de20a9b8116afa3cfc4ec09657",
       "src": "https://github.com/hrsh7th/cmp-buffer",
