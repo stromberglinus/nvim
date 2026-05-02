@@ -10,6 +10,9 @@ else
   OPTIONS.local_vault_path.work = vault_paths.work
 end
 
+vim.fn.mkdir(OPTIONS.local_vault_path.personal, "p")
+vim.fn.mkdir(OPTIONS.local_vault_path.work, "p")
+
 local function obsidian_opts(dir)
   return {
     dir = dir or OPTIONS.local_vault_path.work,
