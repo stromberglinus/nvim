@@ -240,6 +240,16 @@ local packages = {
       name = "codicons.nvim",
       version = "master",
     },
+    {
+        src = "https://github.com/charlesnicholson/plantuml.nvim",
+        name = "plantuml.nvim",
+        version = "main",
+    },
+    {
+      src = "https://github.com/aklt/plantuml-syntax",
+      name = "plantuml-syntax",
+      version = "master",
+    },
 }
 
 vim.api.nvim_create_autocmd("PackChanged", {
@@ -284,3 +294,4 @@ require("plugins.obsidian")
 require("plugins.render-markdown")
 
 require("plugins.copilot")
+require("plantuml")
