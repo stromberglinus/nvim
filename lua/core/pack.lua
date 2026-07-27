@@ -31,6 +31,11 @@ local packages = {
         version = "main",
     },
     {
+        src = "https://github.com/mrjones2014/smart-splits.nvim",
+        name = "smart-splits.nvim",
+        version = "master",
+    },
+    {
       src = "https://github.com/nvim-lualine/lualine.nvim",
       name = "lualine.nvim",
       version = "master",
@@ -284,6 +289,7 @@ require("plugins.noice")
 require("plugins.flash")
 require("plugins.gitsigns")
 require("plugins.todo-comments")
+require("plugins.smartsplit")
 require("plugins.toggleterm")
 require("plugins.grug")
 require("plugins.conform")

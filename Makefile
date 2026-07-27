@@ -71,7 +71,7 @@ install-rust-tools:
 	@echo "Installing Rust/Cargo tools..."
 	@command -v cargo >/dev/null 2>&1 || (echo "❌ cargo not found. Install rustup first:" && echo "   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh" && exit 1)
 	cargo install stylua --force
-	cargo install typos-lsp --force
+	cargo install --git https://github.com/tekumara/typos-lsp --locked typos-lsp --force
 	cargo install tree-sitter-cli --force
 	cargo install git-delta --force
 	cargo install fd-find --force
