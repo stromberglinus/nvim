@@ -15,7 +15,6 @@ require("which-key").setup({
         { "<leader>g", nil, desc = "Git" },
         { "<leader>f", nil, desc = "Find" },
         { "<leader>E", nil, desc = "File explorer" },
-        { "<leader>D", nil, desc = "Debug" },
         { "<leader>q", nil, desc = "Messages" },
         { "<leader>r", nil, desc = "Refactor" },
         { "<leader>o", nil, desc = "Obsidian" },
