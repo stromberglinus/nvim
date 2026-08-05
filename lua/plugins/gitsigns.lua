@@ -39,12 +39,12 @@ require("gitsigns").setup({
     watch_gitdir = {
         follow_files = true,
     },
-    current_line_blame = false,
+    current_line_blame = true,
     diff_opts = {
         ignore_blank_lines = true,
     },
     current_line_blame_opts = {
-        virt_text = false,
+        virt_text = true,
         virt_text_pos = "eol",
         delay = 500,
         virt_text_priority = 100,
