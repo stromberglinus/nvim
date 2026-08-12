@@ -125,6 +125,18 @@ require("gitsigns").setup({
             buffer = bufnr,
             desc = "List all hunks",
         })
+        key("n", "<leader>gj", gs.next_hunk, {
+            buffer = bufnr,
+            desc = "Next Hunk",
+        })
+        key("n", "<leader>gk", gs.prev_hunk, {
+            buffer = bufnr,
+            desc = "Previous Hunk",
+        })
+        key("n", "<leader>gu", gs.undo_stage_hunk, {
+            buffer = bufnr,
+            desc = "Undo stage hunk",
+        })
         key("n", "<leader>gs", gs.stage_hunk, {
             buffer = bufnr,
             desc = "Stage Hunk",
