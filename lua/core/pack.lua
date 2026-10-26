@@ -293,7 +293,7 @@ require("plugins.smartsplit")
 require("plugins.toggleterm")
 require("plugins.grug")
 require("plugins.conform")
-require("plugins.dap")
+-- require("plugins.dap")
 require("plugins.cmake")
 
 require("plugins.obsidian")

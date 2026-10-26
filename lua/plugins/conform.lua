@@ -39,7 +39,7 @@ conform.setup({
 
     json = { "fixjson" },
     markdown = { "markdownlint" },
-    cpp = { "clang-format" },
+    cpp = { "clangd" },
   },
 })
 

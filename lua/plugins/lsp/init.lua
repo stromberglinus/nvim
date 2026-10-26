@@ -122,3 +122,35 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
   end,
 })
+
+-- Formatting keymap:
+-- Use clangd LSP formatting for C/C++ (ensures binary compatibility with your .clang-format)
+-- Use conform if available for other filetypes, with lsp_fallback enabled.
+local ok_conform, conform = pcall(require, "conform")
+
+vim.keymap.set({ "n", "v" }, "<leader>d", function()
+  local ft = vim.bo.filetype
+  if ft == "c" or ft == "cpp" then
+    -- Prefer clangd LSP formatting for C/C++
+    vim.lsp.buf.format({
+      async = true,
+      timeout_ms = 2000,
+      filter = function(client)
+        return client.name == "clangd"
+      end,
+    })
+  else
+    if ok_conform then
+      conform.format({
+        async = true,
+        lsp_fallback = true,
+      })
+    else
+      -- fallback to LSP formatting if conform isn't installed
+      vim.lsp.buf.format({
+        async = true,
+        timeout_ms = 2000,
+      })
+    end
+  end
+end, { desc = "Format" })
